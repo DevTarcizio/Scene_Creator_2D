@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Scene_Creator_2D.vcxproj" />
+  <Project Path="Scene_Creator_2D.vcxproj" Id="a61cb0e6-75ac-425b-a12b-d09f2c394790" />
 </Solution>

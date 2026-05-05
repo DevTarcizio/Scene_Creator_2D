@@ -19,4 +19,15 @@
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="types\vec.hpp">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="types\vertex.hpp">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="types\color.hpp">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
