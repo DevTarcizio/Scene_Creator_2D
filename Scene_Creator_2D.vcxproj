@@ -130,9 +130,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="engine\pipeline\vertexStage.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="engine\pipeline\vertexStage.hpp" />
+    <ClInclude Include="engine\renderer.hpp" />
     <ClInclude Include="types\color.hpp" />
     <ClInclude Include="types\vec.hpp" />
     <ClInclude Include="types\vertex.hpp" />

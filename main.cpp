@@ -1,5 +1,8 @@
 #include <SDL3/SDL.h>
+#include <iostream>
+#include "engine/pipeline/vertexStage.hpp"
 
+VertexStage vs;
 
 int main() {
 	const int width{ 1920 };
@@ -32,6 +35,9 @@ int main() {
 
 		}
 
+		vertexNDC ndc{ 1, 1 };
+		vertex v = vs.process(ndc);
+		std::cout << v.position.x << " " << v.position.y;
 		SDL_UpdateTexture(texture, nullptr, nullptr, width * sizeof(uint32_t));
 
 		SDL_RenderClear(render);
