@@ -40,9 +40,12 @@ void Renderer::setOffPixel(vertex& v)
 
 void Renderer::draw(vertexNDC v0, vertexNDC v1)
 {
-	std::cout << "V0: " << v0.position.x << "," << v0.position.y << "\n";
-	std::cout << "V1: " << v1.position.x << "," << v1.position.y << "\n";
 	rasterizer.drawLine(v0, v1, *this);
+}
+
+void Renderer::draw(vertexNDC v0, vertexNDC v1, vertexNDC v2)
+{
+	rasterizer.drawTriangle(v0, v1, v2, *this);
 }
 
 uint32_t* Renderer::getFramebufferData()

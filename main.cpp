@@ -34,13 +34,15 @@ int main() {
 			}
 
 		}
-		vertexNDC v1, v2;
-		v1.position = { 0, 0 };
+		vertexNDC v1, v2, v3;
+		v1.position = { -0.0f, 0.6f };
 		v1.color = { 1.0f, 0.0f, 0.0f, 1.0f };
-		v2.position = { 1, -1 };
-		v2.color = { 1.0f, 0.0f, 0.0f, 1.0f };
+		v2.position = { -0.5f, -0.3f };
+		v2.color = { 0.0f, 1.0f, 0.0f, 1.0f };
+		v3.position = { 0.5f, -0.3f };
+		v3.color = { 0.0f, 0.0f, 1.0f, 1.0f };
 
-		renderer.draw(v1, v2);
+		renderer.draw(v1, v2, v3);
 
 		SDL_UpdateTexture(texture, nullptr, renderer.getFramebufferData(), width * sizeof(uint32_t));
 		SDL_RenderClear(render);

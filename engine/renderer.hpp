@@ -16,6 +16,7 @@ public:
 	void setOffPixel(vertex& v);
 
 	void draw(vertexNDC v0, vertexNDC v1);
+	void draw(vertexNDC v0, vertexNDC v1, vertexNDC v2);
 
 	// Getters
 	uint32_t* getFramebufferData();

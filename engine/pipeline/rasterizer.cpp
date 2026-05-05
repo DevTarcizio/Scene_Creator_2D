@@ -8,9 +8,6 @@ void Rasterizer::drawLine(vertexNDC v0, vertexNDC v1, Renderer& renderer)
 	vertex vi{ vs.process(v0) };
 	vertex vf{ vs.process(v1) };
 
-	std::cout << vi.position.x << ", " << vi.position.y << "\n";
-	std::cout << vf.position.x << ", " << vf.position.y << "\n";
-
 	float distance_x{ static_cast<float>(vf.position.x - vi.position.x) };
 	float distance_y{ static_cast<float>(vf.position.y - vi.position.y) };
 
@@ -41,5 +38,43 @@ void Rasterizer::drawLine(vertexNDC v0, vertexNDC v1, Renderer& renderer)
 		
 		cords.x += Xincrement;
 		cords.y += Yincrement;
+	}
+}
+
+// Using Barycentric Coordinates
+void Rasterizer::drawTriangle(vertexNDC v0, vertexNDC v1, vertexNDC v2, Renderer& renderer)
+{
+	vertex p0{ vs.process(v0) };
+	vertex p1{ vs.process(v1) };
+	vertex p2{ vs.process(v2) };
+
+	int minX{ std::min(p0.position.x, std::min(p1.position.x, p2.position.x)) };
+	int minY{ std::min(p0.position.y, std::min(p1.position.y, p2.position.y)) };
+	int maxX{ std::max(p0.position.x, std::max(p1.position.x, p2.position.x)) };
+	int maxY{ std::max(p0.position.y, std::max(p1.position.y, p2.position.y)) };
+
+	float area{ (float)math.crossProduct(p0.position, p1.position, p2.position) };
+	float inverseArea{ 1.0f / area };
+
+	for (int i{ minX }; i <= maxX; i++) {
+		for (int j{ minY }; j <= maxY; j++) {
+			vertex p;
+			p.position = { i, j };
+
+			float a0{ (float)math.crossProduct(p.position, p1.position, p2.position) };
+			float a1{ (float)math.crossProduct(p.position, p2.position, p0.position) };
+			float a2{ (float)math.crossProduct(p.position, p0.position, p1.position) };
+
+			float w0{ a0 * inverseArea };
+			float w1{ a1 * inverseArea };
+			float w2{ a2 * inverseArea };
+
+			// Se isso for verdade o ponto P está dentro do triangulo
+			if ((w0 >= 0 && w1 >= 0 && w2 >= 0) || (w0 <= 0 && w1 <= 0 && w2 <= 0)) {
+				Color c = p0.color * w0 + p1.color * w1 + p2.color * w2;
+				p.color = c;
+				renderer.setOnPixel(p);
+			}
+		}
 	}
 }

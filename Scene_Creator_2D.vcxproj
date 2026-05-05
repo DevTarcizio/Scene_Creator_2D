@@ -134,11 +134,13 @@
     <ClCompile Include="engine\pipeline\vertexStage.cpp" />
     <ClCompile Include="engine\renderer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="math\math.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\pipeline\rasterizer.hpp" />
     <ClInclude Include="engine\pipeline\vertexStage.hpp" />
     <ClInclude Include="engine\renderer.hpp" />
+    <ClInclude Include="math\math.hpp" />
     <ClInclude Include="types\color.hpp" />
     <ClInclude Include="types\vec.hpp" />
     <ClInclude Include="types\vertex.hpp" />
