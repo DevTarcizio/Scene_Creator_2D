@@ -18,17 +18,21 @@ struct Color {
 	};
 
 	Color operator+(const Color& other) const {
-		r + other.r;
-		g + other.g;
-		b + other.b;
-		a + other.a;
+		return Color(
+			r + other.r,
+			g + other.g,
+			b + other.b,
+			a + other.a
+		);
 	}
 
 	Color operator*(float scalar) const {
-		r * scalar;
-		g * scalar;
-		b * scalar;
-		a * scalar;
+		return Color(
+			r * scalar,
+			g * scalar,
+			b * scalar,
+			a * scalar
+		);
 	}
 
 	uint32_t toRGBA() const {

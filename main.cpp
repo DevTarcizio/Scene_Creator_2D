@@ -1,12 +1,12 @@
 #include <SDL3/SDL.h>
-#include <iostream>
-#include "engine/pipeline/vertexStage.hpp"
+#include "engine/renderer.hpp"
 
-VertexStage vs;
 
 int main() {
 	const int width{ 1920 };
 	const int height{ 991 };
+
+	Renderer renderer(width, height);
 
 	if (!SDL_Init(SDL_INIT_VIDEO)) {
 		SDL_Log("failed");
@@ -34,12 +34,15 @@ int main() {
 			}
 
 		}
+		vertexNDC v1, v2;
+		v1.position = { 0, 0 };
+		v1.color = { 1.0f, 0.0f, 0.0f, 1.0f };
+		v2.position = { 1, -1 };
+		v2.color = { 1.0f, 0.0f, 0.0f, 1.0f };
 
-		vertexNDC ndc{ 1, 1 };
-		vertex v = vs.process(ndc);
-		std::cout << v.position.x << " " << v.position.y;
-		SDL_UpdateTexture(texture, nullptr, nullptr, width * sizeof(uint32_t));
+		renderer.draw(v1, v2);
 
+		SDL_UpdateTexture(texture, nullptr, renderer.getFramebufferData(), width * sizeof(uint32_t));
 		SDL_RenderClear(render);
 		SDL_RenderTexture(render, texture, nullptr, nullptr);
 		SDL_RenderPresent(render);

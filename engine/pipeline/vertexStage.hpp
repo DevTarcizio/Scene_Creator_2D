@@ -1,10 +1,13 @@
 #pragma once
 #include "../../types/vertex.hpp"
-#include "../renderer.hpp"
 
 class VertexStage {
 public:
-	VertexStage();
+	VertexStage(int width, int height);
 
 	vertex process(const vertexNDC& ndc);
+
+private:
+	int width;
+	int height;
 };

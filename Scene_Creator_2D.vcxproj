@@ -130,10 +130,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="engine\pipeline\rasterizer.cpp" />
     <ClCompile Include="engine\pipeline\vertexStage.cpp" />
+    <ClCompile Include="engine\renderer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="engine\pipeline\rasterizer.hpp" />
     <ClInclude Include="engine\pipeline\vertexStage.hpp" />
     <ClInclude Include="engine\renderer.hpp" />
     <ClInclude Include="types\color.hpp" />
