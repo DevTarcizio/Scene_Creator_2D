@@ -2,6 +2,8 @@
 
 VertexStage::VertexStage() {}
 
+// Pega o vertice em NDC e faz a conversão para Screen Space, 
+// além de repassar a cor para o novo vertice
 vertex VertexStage::process(const vertexNDC& ndc)
 {
 	vertex out;
