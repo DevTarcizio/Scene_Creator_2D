@@ -60,4 +60,9 @@
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md">
+      <Filter>Arquivos de Recurso</Filter>
+    </None>
+  </ItemGroup>
 </Project>

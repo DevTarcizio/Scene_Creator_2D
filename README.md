@@ -4,19 +4,21 @@ Um renderizador 2D, com algumas features (iluminação, texturas...), com capaci
 
 
 ## Como desenhar:
-usando um objeto do tipo Renderer, chama o método draw, que recebe 3 vertices em coordenadas NDC como argumentos,
-cujo o tipo vertexNDC, possui dois membros -> position X,Y e color dada em RGBA de 0.0f a 1.0f
+usando um objeto do tipo Renderer, chama o método draw, que recebe 3 vertices em coordenadas NDC como argumentos
+cujo o tipo vertex, possui dois membros -> position X,Y e color dada em RGBA de 0.0f a 1.0f. Além de
+um shader de qualquer tipo que herde VertexShader
 
 ### Método draw:
-chama o objeto do tipo Rasterizer, e chama o método drawTriangle, passando os mesmos vertices, e o próprio objeto 
-Renderer
+usa o shader passado para ele para processar os vertex em vertexOut e os passa para o rasterizer, através do método 
+drawTriangle
 
 ### Método drawTriangle: 
-usa o objeto VertexStage para converter os vertices em NDC para vertex em screen space, após isso calcula a bounding
+usa o objeto VertexStage para converter os vertexOut em NDC para screenVertex em screen space, após isso calcula a bounding
 box desses vertices, para então calcular a area, e logo após calcular os pesos de cada vertice, para a verificação 
 se o pixel está dentro ou fora da triangle, onde caso esteja, fazemos a interpolação das cores e ligamos o pixel através 
 do objeto Renderer que o rasterizer tem instanciado
 
 ## Pipeline Atual
-input de vertices em NDC -> conversão de NDC para screen space no VertexStage -> Definição de posição e cor no rasterizer
+input de vertices em NDC -> o Vertex Shader processa eles (por enquanto não nada além de copiar) e envia em vertexOut ->
+conversão de NDC para screen space no VertexStage -> Definição de posição e cor no rasterizer
 -> Desenho dos vertices no Renderer
