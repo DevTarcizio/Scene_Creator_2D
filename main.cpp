@@ -2,7 +2,8 @@
 #include "engine/renderer.hpp"
 #include "engine/pipeline/vertexShader.hpp"
 
-BasicShader shader;
+BasicShader basicShader;
+SinShader sinShader;
 
 int main() {
 	const int width{ 1920 };
@@ -44,7 +45,9 @@ int main() {
 		v3.position = { 0.5f, -0.3f };
 		v3.color = { 0.0f, 0.0f, 1.0f, 1.0f };
 
-		renderer.draw(v1, v2, v3, shader);
+		sinShader.time += 0.016f;
+		renderer.clear({ 0.0f, 0.0f, 0.0f, 1.0f });
+		renderer.draw(v1, v2, v3, sinShader);
 
 		SDL_UpdateTexture(texture, nullptr, renderer.getFramebufferData(), width * sizeof(uint32_t));
 		SDL_RenderClear(render);

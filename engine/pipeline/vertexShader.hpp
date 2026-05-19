@@ -1,5 +1,6 @@
 #pragma once 
 #include "../../types/vertex.hpp" 
+#include <cmath>
 
 class VertexShader { 
 
@@ -14,4 +15,13 @@ class BasicShader : public VertexShader {
 
 public: 
 	vertexOut process(const vertex& v) override; 
+};
+
+// Shader que faz o triangulo ondular na tela!
+class SinShader : public VertexShader {
+
+public:
+	vertexOut process(const vertex& v) override;
+
+	float time;
 };

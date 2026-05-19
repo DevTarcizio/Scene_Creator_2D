@@ -22,3 +22,11 @@ do objeto Renderer que o rasterizer tem instanciado
 input de vertices em NDC -> o Vertex Shader processa eles (por enquanto não nada além de copiar) e envia em vertexOut ->
 conversão de NDC para screen space no VertexStage -> Definição de posição e cor no rasterizer
 -> Desenho dos vertices no Renderer
+
+## Shaders
+
+### Basic Shader
+Não faz literalmente nada, foi apenas o teste inicial
+
+### Sin Shader
+Faz o triangulo ondular através da formula: v.position.y + std::sin(time * 15.0f - v.position.x * 15.0f) * 0.25f

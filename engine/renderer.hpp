@@ -18,6 +18,7 @@ public:
 
 	void draw(vertex v0, vertex v1, VertexShader& shader);
 	void draw(vertex v0, vertex v1, vertex v2, VertexShader& shader);
+	void clear(Color color);
 
 	// Getters
 	uint32_t* getFramebufferData();

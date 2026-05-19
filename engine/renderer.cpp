@@ -56,6 +56,14 @@ void Renderer::draw(vertex v0, vertex v1, vertex v2, VertexShader& shader)
 	rasterizer.drawTriangle(out0, out1, out2, *this);
 }
 
+void Renderer::clear(Color color)
+{
+	uint32_t c = color.toRGBA();
+	for (int i{ 0 }; i < framebuffer.size(); i++) {
+		framebuffer[i] = c;
+	}
+}
+
 uint32_t* Renderer::getFramebufferData()
 {
 	return framebuffer.data();
