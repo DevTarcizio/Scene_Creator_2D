@@ -17,3 +17,10 @@ struct vec2f {
 	float x;
 	float y;
 };
+
+struct vec4f {
+	float x;
+	float y;
+	float z;
+	float w;
+};

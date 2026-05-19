@@ -3,10 +3,10 @@
 
 Rasterizer::Rasterizer(int w, int h) : width(w), height(h), vs(width, height) {}
 
-void Rasterizer::drawLine(vertexNDC v0, vertexNDC v1, Renderer& renderer)
+void Rasterizer::drawLine(vertexOut v0, vertexOut v1, Renderer& renderer)
 {
-	vertex vi{ vs.process(v0) };
-	vertex vf{ vs.process(v1) };
+	screenVertex vi{ vs.process(v0) };
+	screenVertex vf{ vs.process(v1) };
 
 	float distance_x{ static_cast<float>(vf.position.x - vi.position.x) };
 	float distance_y{ static_cast<float>(vf.position.y - vi.position.y) };
@@ -28,7 +28,7 @@ void Rasterizer::drawLine(vertexNDC v0, vertexNDC v1, Renderer& renderer)
 
 
 	for (int i{ 0 }; i <= steps; i++) {
-		vertex p;
+		screenVertex p;
 
 		p.position.x = (int)round(cords.x);
 		p.position.y = (int)round(cords.y);
@@ -42,11 +42,11 @@ void Rasterizer::drawLine(vertexNDC v0, vertexNDC v1, Renderer& renderer)
 }
 
 // Using Barycentric Coordinates
-void Rasterizer::drawTriangle(vertexNDC v0, vertexNDC v1, vertexNDC v2, Renderer& renderer)
+void Rasterizer::drawTriangle(vertexOut v0, vertexOut v1, vertexOut v2, Renderer& renderer)
 {
-	vertex p0{ vs.process(v0) };
-	vertex p1{ vs.process(v1) };
-	vertex p2{ vs.process(v2) };
+	screenVertex p0{ vs.process(v0) };
+	screenVertex p1{ vs.process(v1) };
+	screenVertex p2{ vs.process(v2) };
 
 	int minX{ std::min(p0.position.x, std::min(p1.position.x, p2.position.x)) };
 	int minY{ std::min(p0.position.y, std::min(p1.position.y, p2.position.y)) };
@@ -58,7 +58,7 @@ void Rasterizer::drawTriangle(vertexNDC v0, vertexNDC v1, vertexNDC v2, Renderer
 
 	for (int i{ minX }; i <= maxX; i++) {
 		for (int j{ minY }; j <= maxY; j++) {
-			vertex p;
+			screenVertex p;
 			p.position = { i, j };
 
 			float a0{ (float)math.crossProduct(p.position, p1.position, p2.position) };

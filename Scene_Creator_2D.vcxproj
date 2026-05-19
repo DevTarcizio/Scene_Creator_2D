@@ -135,9 +135,11 @@
     <ClCompile Include="engine\renderer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="math\math.cpp" />
+    <ClCompile Include="vertexShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\pipeline\rasterizer.hpp" />
+    <ClInclude Include="engine\pipeline\vertexShader.hpp" />
     <ClInclude Include="engine\pipeline\vertexStage.hpp" />
     <ClInclude Include="engine\renderer.hpp" />
     <ClInclude Include="math\math.hpp" />

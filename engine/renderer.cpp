@@ -4,7 +4,7 @@ Renderer::Renderer(int w, int h) : width(w), height(h), framebuffer(w * h, 0), r
 {
 }
 
-bool Renderer::isInsideScreen(vertex& v) const
+bool Renderer::isInsideScreen(screenVertex& v) const
 {
 	if (v.position.x >= width || v.position.x < 0) {
 		return false;
@@ -16,7 +16,7 @@ bool Renderer::isInsideScreen(vertex& v) const
 	return true;
 }
 
-void Renderer::setOnPixel(vertex& v)
+void Renderer::setOnPixel(screenVertex& v)
 {
 	if (!isInsideScreen(v)) {
 		std::cout << "Vertex off the screen";
@@ -27,7 +27,7 @@ void Renderer::setOnPixel(vertex& v)
 	framebuffer[index] = v.color.toRGBA();
 }
 
-void Renderer::setOffPixel(vertex& v)
+void Renderer::setOffPixel(screenVertex& v)
 {
 	if (!isInsideScreen(v)) {
 		std::cout << "Vertex off the screen";
@@ -38,14 +38,22 @@ void Renderer::setOffPixel(vertex& v)
 	framebuffer[index] = 0xFFFFFFFF;
 }
 
-void Renderer::draw(vertexNDC v0, vertexNDC v1)
+void Renderer::draw(vertex v0, vertex v1, VertexShader& shader)
 {
-	rasterizer.drawLine(v0, v1, *this);
+	vertexOut out0 = shader.process(v0);
+	vertexOut out1 = shader.process(v1);
+
+	rasterizer.drawLine(out0, out1, *this);
 }
 
-void Renderer::draw(vertexNDC v0, vertexNDC v1, vertexNDC v2)
+void Renderer::draw(vertex v0, vertex v1, vertex v2, VertexShader& shader)
 {
-	rasterizer.drawTriangle(v0, v1, v2, *this);
+	vertexOut out0 = shader.process(v0);
+	vertexOut out1 = shader.process(v1);
+	vertexOut out2 = shader.process(v2);
+
+
+	rasterizer.drawTriangle(out0, out1, out2, *this);
 }
 
 uint32_t* Renderer::getFramebufferData()

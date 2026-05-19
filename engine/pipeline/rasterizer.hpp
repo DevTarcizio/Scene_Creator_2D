@@ -10,8 +10,8 @@ class Rasterizer {
 public:
 	Rasterizer(int w, int h);
 
-	void drawLine(vertexNDC v0, vertexNDC v1, Renderer& renderer);
-	void drawTriangle(vertexNDC v0, vertexNDC v1, vertexNDC v2, Renderer& renderer);
+	void drawLine(vertexOut v0, vertexOut v1, Renderer& renderer);
+	void drawTriangle(vertexOut v0, vertexOut v1, vertexOut v2, Renderer& renderer);
 
 private:
 	int width;

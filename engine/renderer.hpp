@@ -1,6 +1,7 @@
 #pragma once
 #include "../types/vertex.hpp"
 #include "pipeline/rasterizer.hpp"
+#include "pipeline/vertexShader.hpp"
 #include <vector>
 #include <iostream>
 
@@ -11,12 +12,12 @@ public:
 	Renderer(int w, int h);
 
 	// Métodos dos pixel
-	bool isInsideScreen(vertex& v) const;
-	void setOnPixel(vertex& v);
-	void setOffPixel(vertex& v);
+	bool isInsideScreen(screenVertex& v) const;
+	void setOnPixel(screenVertex& v);
+	void setOffPixel(screenVertex& v);
 
-	void draw(vertexNDC v0, vertexNDC v1);
-	void draw(vertexNDC v0, vertexNDC v1, vertexNDC v2);
+	void draw(vertex v0, vertex v1, VertexShader& shader);
+	void draw(vertex v0, vertex v1, vertex v2, VertexShader& shader);
 
 	// Getters
 	uint32_t* getFramebufferData();

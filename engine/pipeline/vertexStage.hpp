@@ -5,7 +5,7 @@ class VertexStage {
 public:
 	VertexStage(int width, int height);
 
-	vertex process(const vertexNDC& ndc);
+	screenVertex process(const vertexOut& v);
 
 private:
 	int width;

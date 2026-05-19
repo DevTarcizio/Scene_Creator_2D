@@ -1,6 +1,8 @@
 #include <SDL3/SDL.h>
 #include "engine/renderer.hpp"
+#include "engine/pipeline/vertexShader.hpp"
 
+BasicShader shader;
 
 int main() {
 	const int width{ 1920 };
@@ -34,7 +36,7 @@ int main() {
 			}
 
 		}
-		vertexNDC v1, v2, v3;
+		vertex v1, v2, v3;
 		v1.position = { -0.0f, 0.6f };
 		v1.color = { 1.0f, 0.0f, 0.0f, 1.0f };
 		v2.position = { -0.5f, -0.3f };
@@ -42,7 +44,7 @@ int main() {
 		v3.position = { 0.5f, -0.3f };
 		v3.color = { 0.0f, 0.0f, 1.0f, 1.0f };
 
-		renderer.draw(v1, v2, v3);
+		renderer.draw(v1, v2, v3, shader);
 
 		SDL_UpdateTexture(texture, nullptr, renderer.getFramebufferData(), width * sizeof(uint32_t));
 		SDL_RenderClear(render);
