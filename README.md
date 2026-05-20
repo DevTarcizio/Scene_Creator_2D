@@ -1,7 +1,8 @@
 # Scene_Creator_2D
 Um renderizador 2D, com algumas features (iluminação, texturas...), com capacidade de criar cenas 2D
 
-
+## Arquitertura do Sistema
+![Arquitertura do Sistema](design_system.jpeg)
 
 ## Como desenhar:
 usando um objeto do tipo Renderer, chama o método draw, que recebe 3 vertices em coordenadas NDC como argumentos
