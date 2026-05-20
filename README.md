@@ -1,7 +1,8 @@
 # Scene_Creator_2D
 Um renderizador 2D, com algumas features (iluminação, texturas...), com capacidade de criar cenas 2D
 
-
+## Arquitertura do Sistema
+![Arquitertura do Sistema](design_system.jpeg)
 
 ## Como desenhar:
 usando um objeto do tipo Renderer, chama o método draw, que recebe 3 vertices em coordenadas NDC como argumentos
@@ -28,6 +29,11 @@ conversão de NDC para screen space no VertexStage -> Definição de posição e
 ### Sin Vertex Shader
 Faz o triangulo ondular através da formula: v.position.y + std::sin(time * 15.0f - v.position.x * 15.0f) * 0.25f
 
+<<<<<<< HEAD
 ### Sin Fragment Shader
 Gera uma onda azul no triangulo, que vai da direita para esquerda, 
 com a seguinte formula: 
+=======
+### Sin Shader
+Faz o triangulo ondular através da formula: v.position.y + std::sin(time * 15.0f - v.position.x * 15.0f) * 0.25f
+>>>>>>> afd8bdf533f4789a382f5fb8c568be8eb02a7071
