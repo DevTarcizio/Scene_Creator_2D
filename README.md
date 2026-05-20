@@ -25,8 +25,9 @@ conversão de NDC para screen space no VertexStage -> Definição de posição e
 
 ## Shaders
 
-### Basic Shader
-Não faz literalmente nada, foi apenas o teste inicial
-
-### Sin Shader
+### Sin Vertex Shader
 Faz o triangulo ondular através da formula: v.position.y + std::sin(time * 15.0f - v.position.x * 15.0f) * 0.25f
+
+### Sin Fragment Shader
+Gera uma onda azul no triangulo, que vai da direita para esquerda, 
+com a seguinte formula: 

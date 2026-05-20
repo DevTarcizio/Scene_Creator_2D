@@ -1,24 +1,19 @@
 #pragma once
 #include "../../types/fragment.hpp"
+#include "../../types/context.hpp"
 #include <cmath>
 
-class fragmentShader {
+class FragmentShader {
 
 public:
-	virtual Color process(const fragment& frag) = 0;
-	virtual ~fragmentShader() {};
+	virtual Color process(const fragment& frag, const pipelineContext& ctx) = 0;
+	virtual ~FragmentShader() {};
 
 	
 };
 
-class basicFragmentShader : public fragmentShader {
 
+class SinFragmentShader : public FragmentShader {
 public:
-	Color process(const fragment& frag) override;
-};
-
-class sinFragmentShader : public fragmentShader {
-public:
-	Color process(const fragment& frag) override;
-	float time;
+	Color process(const fragment& frag, const pipelineContext& ctx) override;
 };

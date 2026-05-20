@@ -1,5 +1,6 @@
 #pragma once
 #include "../types/vertex.hpp"
+#include "../types/context.hpp"
 #include "pipeline/rasterizer.hpp"
 #include "pipeline/vertexShader.hpp"
 #include <vector>
@@ -16,8 +17,8 @@ public:
 	void setOnPixel(screenVertex& v);
 	void setOffPixel(screenVertex& v);
 
-	void draw(vertex v0, vertex v1, VertexShader& shader);
-	void draw(vertex v0, vertex v1, vertex v2, VertexShader& shader);
+	void draw(vertex v0, vertex v1, pipelineContext& ctx);
+	void draw(vertex v0, vertex v1, vertex v2, pipelineContext& ctx);
 	void clear(Color color);
 
 	// Getters

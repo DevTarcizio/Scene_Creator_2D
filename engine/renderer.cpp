@@ -38,22 +38,22 @@ void Renderer::setOffPixel(screenVertex& v)
 	framebuffer[index] = 0xFFFFFFFF;
 }
 
-void Renderer::draw(vertex v0, vertex v1, VertexShader& shader)
+void Renderer::draw(vertex v0, vertex v1, pipelineContext& ctx)
 {
-	vertexOut out0 = shader.process(v0);
-	vertexOut out1 = shader.process(v1);
+	vertexOut out0 = ctx.vs->process(v0, ctx);
+	vertexOut out1 = ctx.vs->process(v1, ctx);
 
 	rasterizer.drawLine(out0, out1, *this);
 }
 
-void Renderer::draw(vertex v0, vertex v1, vertex v2, VertexShader& shader)
+void Renderer::draw(vertex v0, vertex v1, vertex v2, pipelineContext& ctx)
 {
-	vertexOut out0 = shader.process(v0);
-	vertexOut out1 = shader.process(v1);
-	vertexOut out2 = shader.process(v2);
+	vertexOut out0 = ctx.vs->process(v0, ctx);
+	vertexOut out1 = ctx.vs->process(v1, ctx);
+	vertexOut out2 = ctx.vs->process(v2, ctx);
 
 
-	rasterizer.drawTriangle(out0, out1, out2, *this);
+	rasterizer.drawTriangle(out0, out1, out2, *this, ctx);
 }
 
 void Renderer::clear(Color color)

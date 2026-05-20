@@ -1,9 +1,11 @@
 #pragma once
-#include "../engine/pipeline/fragmentShader.hpp"
-#include "../engine/pipeline/vertexShader.hpp"
-#include "../engine/renderer.hpp"
+
+class VertexShader;
+class FragmentShader;
 
 struct pipelineContext {
 	VertexShader* vs;
-	fragmentShader* fs
+	FragmentShader* fs;
+	float deltaTime;
+	float time;
 };

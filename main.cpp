@@ -1,11 +1,23 @@
 #include <SDL3/SDL.h>
 #include "engine/renderer.hpp"
 #include "engine/pipeline/vertexShader.hpp"
+#include "engine/pipeline/fragmentShader.hpp"
+#include "types/context.hpp"
 
-BasicShader basicShader;
-SinShader sinShader;
 
 int main() {
+
+	
+	pipelineContext context {};
+
+	SinVertexShader sinVertexShader;
+	SinVertexShader* pointerSVS = &sinVertexShader;
+	SinFragmentShader sinFragmentShader;
+	SinFragmentShader* pointerSFS = &sinFragmentShader;
+	
+	context.vs = pointerSVS;
+	context.fs = pointerSFS;
+
 	const int width{ 1920 };
 	const int height{ 991 };
 
@@ -29,6 +41,8 @@ int main() {
 
 	bool isRunning{ true };
 
+	Uint64 lastTime = SDL_GetTicks();
+
 	SDL_Event event;
 	while (isRunning) {
 		while (SDL_PollEvent(&event)) {
@@ -37,6 +51,13 @@ int main() {
 			}
 
 		}
+
+		Uint64 currentTime = SDL_GetTicks();
+		float deltaTime = (currentTime - lastTime) / 1000.0f;
+		lastTime = currentTime;
+		context.deltaTime = deltaTime;
+		context.time += deltaTime;
+
 		vertex v1, v2, v3;
 		v1.position = { -0.0f, 0.6f };
 		v1.color = { 1.0f, 0.0f, 0.0f, 1.0f };
@@ -45,9 +66,8 @@ int main() {
 		v3.position = { 0.5f, -0.3f };
 		v3.color = { 0.0f, 0.0f, 1.0f, 1.0f };
 
-		sinShader.time += 0.016f;
 		renderer.clear({ 0.0f, 0.0f, 0.0f, 1.0f });
-		renderer.draw(v1, v2, v3, sinShader);
+		renderer.draw(v1, v2, v3, context);
 
 		SDL_UpdateTexture(texture, nullptr, renderer.getFramebufferData(), width * sizeof(uint32_t));
 		SDL_RenderClear(render);
