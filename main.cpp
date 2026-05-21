@@ -21,12 +21,11 @@ int main() {
 	v5.color = { 0.1f, 0.1f, 0.1f, 1.0f };
 
 	std::vector<vertex> vertices{
-		v1, v2, v3, v4, v5
+		v1, v2, v3, v4
 	};
 	std::vector<uint32_t> indices{
 		0, 1, 2,
 		0, 2, 3,
-		2, 3, 4
 	};
 
 	Mesh mesh{ vertices, indices };
@@ -40,9 +39,13 @@ int main() {
 	
 	context.vs = pointerSVS;
 	context.fs = pointerSFS;
+	context.transform.position.x += 0.0f;
+	context.transform.position.y += 0.0f;
+	context.transform.scale.x = 1.0f;
+	context.transform.scale.y = 1.0f;
 
-	const int width{ 1920 };
-	const int height{ 991 };
+	const int width{ 640 };
+	const int height{	480 };
 
 	Renderer renderer(width, height);
 
@@ -80,7 +83,7 @@ int main() {
 		lastTime = currentTime;
 		context.deltaTime = deltaTime;
 		context.time += deltaTime;
-
+		context.transform.rotation += deltaTime;
 		
 
 		renderer.clear({ 0.0f, 0.0f, 0.0f, 1.0f });

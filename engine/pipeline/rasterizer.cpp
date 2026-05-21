@@ -66,12 +66,18 @@ void Rasterizer::drawTriangle(vertexOut v0, vertexOut v1, vertexOut v2, Renderer
 	int maxX{ std::max(p0.position.x, std::max(p1.position.x, p2.position.x)) };
 	int maxY{ std::max(p0.position.y, std::max(p1.position.y, p2.position.y)) };
 
+	minX = std::max(0, minX);
+	minY = std::max(0, minY);
+	maxX = std::min(maxX, renderer.getWidth() - 1);
+	maxY = std::min(maxY, renderer.getHeight() - 1);
+
 	float area{ (float)math.crossProduct(p0.position, p1.position, p2.position) };
 	float inverseArea{ 1.0f / area };
 
+	screenVertex p;
 	for (int i{ minX }; i <= maxX; i++) {
 		for (int j{ minY }; j <= maxY; j++) {
-			screenVertex p;
+			
 			p.position = { i, j };
 
 			float a0{ (float)math.crossProduct(p.position, p1.position, p2.position) };

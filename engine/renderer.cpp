@@ -18,22 +18,12 @@ bool Renderer::isInsideScreen(screenVertex& v) const
 
 void Renderer::setOnPixel(screenVertex& v)
 {
-	if (!isInsideScreen(v)) {
-		std::cout << "Vertex off the screen";
-		return;
-	}
-
 	int index{ (v.position.y * width) + v.position.x };
 	framebuffer[index] = v.color.toRGBA();
 }
 
 void Renderer::setOffPixel(screenVertex& v)
 {
-	if (!isInsideScreen(v)) {
-		std::cout << "Vertex off the screen";
-		return;
-	}
-
 	int index{ (v.position.y * width) + v.position.x };
 	framebuffer[index] = 0xFFFFFFFF;
 }
