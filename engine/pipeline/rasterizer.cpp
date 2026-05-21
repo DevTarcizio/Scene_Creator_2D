@@ -91,3 +91,8 @@ void Rasterizer::drawTriangle(vertexOut v0, vertexOut v1, vertexOut v2, Renderer
 		}
 	}
 }
+
+void Rasterizer::drawMesh(Mesh m, pipelineContext& ctx) {
+	for (size_t i{ 0 }; i < m.getIndices().size(); i += 3) {
+	}
+}

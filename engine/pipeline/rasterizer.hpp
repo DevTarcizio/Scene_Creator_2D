@@ -2,6 +2,7 @@
 #include "../../types/vertex.hpp"
 #include "../../types/fragment.hpp"
 #include "../../types/context.hpp"
+#include "../../types/mesh.hpp"
 #include "../../math/math.hpp"
 #include "vertexStage.hpp"
 #include "fragmentShader.hpp"
@@ -24,6 +25,7 @@ public:
 
 	void drawLine(vertexOut v0, vertexOut v1, Renderer& renderer);
 	void drawTriangle(vertexOut v0, vertexOut v1, vertexOut v2, Renderer& renderer, pipelineContext& ctx);
+	void drawMesh(Mesh m, pipelineContext& ctx);
 
 private:
 	int width;

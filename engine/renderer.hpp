@@ -19,6 +19,7 @@ public:
 
 	void draw(vertex v0, vertex v1, pipelineContext& ctx);
 	void draw(vertex v0, vertex v1, vertex v2, pipelineContext& ctx);
+	void draw(const Mesh& m, pipelineContext& ctx);
 	void clear(Color color);
 
 	// Getters

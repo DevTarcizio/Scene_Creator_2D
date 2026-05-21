@@ -3,11 +3,34 @@
 #include "engine/pipeline/vertexShader.hpp"
 #include "engine/pipeline/fragmentShader.hpp"
 #include "types/context.hpp"
+#include "types/mesh.hpp"
 
 
 int main() {
 
-	
+	vertex v1, v2, v3, v4, v5;
+	v1.position = { -0.5f, 0.6f };
+	v1.color = { 1.0f, 0.0f, 0.0f, 1.0f };
+	v2.position = { -0.5f, -0.3f };
+	v2.color = { 0.0f, 1.0f, 0.0f, 1.0f };
+	v3.position = { 0.5f, -0.3f };
+	v3.color = { 0.0f, 0.0f, 1.0f, 1.0f };
+	v4.position = { 0.5f, 0.6f };
+	v4.color = { 0.1f, 0.1f, 0.1f, 1.0f };
+	v5.position = { 0.2f, -0.6f };
+	v5.color = { 0.1f, 0.1f, 0.1f, 1.0f };
+
+	std::vector<vertex> vertices{
+		v1, v2, v3, v4, v5
+	};
+	std::vector<uint32_t> indices{
+		0, 1, 2,
+		0, 2, 3,
+		2, 3, 4
+	};
+
+	Mesh mesh{ vertices, indices };
+
 	pipelineContext context {};
 
 	SinVertexShader sinVertexShader;
@@ -58,16 +81,10 @@ int main() {
 		context.deltaTime = deltaTime;
 		context.time += deltaTime;
 
-		vertex v1, v2, v3;
-		v1.position = { -0.0f, 0.6f };
-		v1.color = { 1.0f, 0.0f, 0.0f, 1.0f };
-		v2.position = { -0.5f, -0.3f };
-		v2.color = { 0.0f, 1.0f, 0.0f, 1.0f };
-		v3.position = { 0.5f, -0.3f };
-		v3.color = { 0.0f, 0.0f, 1.0f, 1.0f };
+		
 
 		renderer.clear({ 0.0f, 0.0f, 0.0f, 1.0f });
-		renderer.draw(v1, v2, v3, context);
+		renderer.draw(mesh, context);
 
 		SDL_UpdateTexture(texture, nullptr, renderer.getFramebufferData(), width * sizeof(uint32_t));
 		SDL_RenderClear(render);

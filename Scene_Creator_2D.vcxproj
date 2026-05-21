@@ -148,6 +148,7 @@
     <ClInclude Include="types\color.hpp" />
     <ClInclude Include="types\context.hpp" />
     <ClInclude Include="types\fragment.hpp" />
+    <ClInclude Include="types\mesh.hpp" />
     <ClInclude Include="types\vec.hpp" />
     <ClInclude Include="types\vertex.hpp" />
   </ItemGroup>
