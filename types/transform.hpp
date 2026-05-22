@@ -1,8 +1,21 @@
 #pragma once
 #include "vec.hpp"
+#include "mat.hpp"
 
 struct Transform {
 	vec2f position;
 	vec2f scale;
 	float rotation;
+
+	mat3 getMatrix() const {
+		mat3 out{ mat3::identity() };
+
+		mat3 s{ mat3::scale(scale.x, scale.y) };
+		mat3 t{ mat3::translation(position.x, position.y) };
+		mat3 r{ mat3::rotation(rotation) };
+
+		out = t * r * s;
+
+		return out;
+	}
 };

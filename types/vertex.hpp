@@ -6,8 +6,6 @@
 struct vertex {
 	vec2f position;
 	Color color;
-
-	
 };
 
 // EM NDC POR ENQUANTO, SERÁ TROCADO DEPOIS

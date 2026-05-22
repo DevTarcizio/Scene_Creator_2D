@@ -24,6 +24,9 @@ copiar) e envia em vertexOut -> conversão de NDC para screen space no VertexSta
 
 ## Shaders
 
+Transformação com mat3 (scale, rotate, translate), fazer uma forma de generalizar isso, apesar de achar q não será
+arquiterturamente certo!
+
 ### Sin Vertex Shader
 Faz o triangulo ondular através da formula: v.position.y + std::sin(time * 15.0f - v.position.x * 15.0f) * 0.25f
 

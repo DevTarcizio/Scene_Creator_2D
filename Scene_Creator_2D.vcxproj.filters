@@ -36,6 +36,9 @@
     <ClCompile Include="engine\pipeline\fragmentShader.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="types\mat.hpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="types\vec.hpp">
