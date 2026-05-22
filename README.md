@@ -36,13 +36,13 @@ com a seguinte formula: 0.5f + 0.5f * std::sin(frag.position.x * 0.1f + ctx.time
 
 ## Espaço de Coordenadas
 
-Local Space -> vertices da mesh
-↓
-Vertex Shader -> aplica transformações
-↓
-World Space -> vertices já transformado
-↓
-NDC -> Enviado para o rasterizer
-↓
-Screen Space -> Saida do rasterizer
+Local Space -> vertices da mesh <br/>
+↓ <br/>
+Vertex Shader -> aplica transformações <br/>
+↓ <br/>
+World Space -> vertices já transformado <br/>
+↓ <br/>
+NDC -> Enviado para o rasterizer <br/>
+↓ <br/>
+Screen Space -> Saida do rasterizer <br/>
  
