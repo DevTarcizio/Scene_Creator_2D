@@ -33,4 +33,16 @@ Faz o triangulo ondular através da formula: v.position.y + std::sin(time * 15.0
 ### Sin Fragment Shader
 Gera uma onda azul no triangulo, que vai da direita para esquerda, 
 com a seguinte formula: 0.5f + 0.5f * std::sin(frag.position.x * 0.1f + ctx.time * 15.0f);
+
+## Espaço de Coordenadas
+
+Local Space -> vertices da mesh
+↓
+Vertex Shader -> aplica transformações
+↓
+World Space -> vertices já transformado
+↓
+NDC -> Enviado para o rasterizer
+↓
+Screen Space -> Saida do rasterizer
  
