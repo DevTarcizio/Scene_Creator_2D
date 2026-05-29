@@ -70,3 +70,20 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# Visual Studio
+.vs/
+*.user
+*.VC.db
+*.opendb
+
+# Build folders
+x64/
+Debug/
+Release/
+
+# Executables
+*.exe
+*.obj
+*.pdb
+*.ilk
