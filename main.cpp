@@ -83,7 +83,7 @@ int main() {
 		lastTime = currentTime;
 		context.deltaTime = deltaTime;
 		context.time += deltaTime;
-		//context.transform.rotation += deltaTime;
+		context.transform.rotation += deltaTime;
 		
 
 		renderer.clear({ 0.0f, 0.0f, 0.0f, 1.0f });

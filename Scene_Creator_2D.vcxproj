@@ -138,6 +138,7 @@
     <ClCompile Include="math\math.cpp" />
     <ClCompile Include="engine\pipeline\vertexShader.cpp" />
     <ClCompile Include="types\mat.hpp" />
+    <ClCompile Include="types\object.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="engine\pipeline\fragmentShader.hpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="types\context.hpp" />
     <ClInclude Include="types\fragment.hpp" />
     <ClInclude Include="types\mesh.hpp" />
+    <ClInclude Include="types\object.hpp" />
     <ClInclude Include="types\transform.hpp" />
     <ClInclude Include="types\vec.hpp" />
     <ClInclude Include="types\vertex.hpp" />

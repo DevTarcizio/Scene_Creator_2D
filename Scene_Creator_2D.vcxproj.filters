@@ -36,8 +36,11 @@
     <ClCompile Include="engine\pipeline\fragmentShader.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="types\mat.hpp">
+    <ClCompile Include="types\object.cpp">
       <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="types\mat.hpp">
+      <Filter>Arquivos de Cabeçalho</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +81,9 @@
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="types\transform.hpp">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="types\object.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>

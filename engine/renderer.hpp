@@ -1,4 +1,5 @@
 #pragma once
+#include "../types/object.hpp"
 #include "../types/vertex.hpp"
 #include "../types/context.hpp"
 #include "pipeline/rasterizer.hpp"
