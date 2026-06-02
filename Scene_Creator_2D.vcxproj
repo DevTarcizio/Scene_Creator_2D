@@ -137,6 +137,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="math\math.cpp" />
     <ClCompile Include="engine\pipeline\vertexShader.cpp" />
+    <ClCompile Include="types\factories\objectFactory.cpp" />
     <ClCompile Include="types\mat.hpp" />
     <ClCompile Include="types\object.cpp" />
   </ItemGroup>
@@ -149,6 +150,7 @@
     <ClInclude Include="math\math.hpp" />
     <ClInclude Include="types\color.hpp" />
     <ClInclude Include="types\context.hpp" />
+    <ClInclude Include="types\factories\objectFactory.hpp" />
     <ClInclude Include="types\fragment.hpp" />
     <ClInclude Include="types\mesh.hpp" />
     <ClInclude Include="types\object.hpp" />

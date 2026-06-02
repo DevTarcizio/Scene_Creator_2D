@@ -5,44 +5,14 @@
 #include "types/context.hpp"
 #include "types/mesh.hpp"
 #include "types/object.hpp"
+#include "types/factories/objectFactory.hpp"
 
 int main() {
 
 	// Criação do object
-	vertex v1, v2, v3, v4, v5;
-	v1.position = { -0.5f, 0.6f };
-	v1.color = { 1.0f, 0.0f, 0.0f, 1.0f };
-	v2.position = { -0.5f, -0.3f };
-	v2.color = { 0.0f, 1.0f, 0.0f, 1.0f };
-	v3.position = { 0.5f, -0.3f };
-	v3.color = { 0.0f, 0.0f, 1.0f, 1.0f };
-	v4.position = { 0.5f, 0.6f };
-	v4.color = { 0.1f, 0.1f, 0.1f, 1.0f };
-	v5.position = { 0.2f, -0.6f };
-	v5.color = { 0.1f, 0.1f, 0.1f, 1.0f };
+	Object obj = createRectangle();
+	pipelineContext context{};
 
-	std::vector<vertex> vertices{
-		v1, v2, v3, v4
-	};
-	std::vector<uint32_t> indices{
-		0, 1, 2,
-		0, 2, 3,
-	};
-
-	Mesh mesh{ vertices, indices };
-	Mesh* m = &mesh;
-
-	Transform t{};
-
-	pipelineContext context {};
-	Object obj(m, t);
-	
-	SinVertexShader svs;
-	SinVertexShader* SVS{ &svs };
-	SinFragmentShader sfs;
-	SinFragmentShader* SFS{ &sfs };
-	obj.setVertexShader(SVS);
-	obj.setFragmentShader(SFS);
 
 	// Fluxo de janela
 	const int width{ 640 };

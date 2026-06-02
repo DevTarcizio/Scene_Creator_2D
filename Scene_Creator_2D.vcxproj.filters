@@ -42,6 +42,9 @@
     <ClCompile Include="types\mat.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClCompile>
+    <ClCompile Include="types\factories\objectFactory.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="types\vec.hpp">
@@ -86,9 +89,15 @@
     <ClInclude Include="types\object.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
+    <ClInclude Include="types\factories\objectFactory.hpp">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md">
+      <Filter>Arquivos de Recurso</Filter>
+    </None>
+    <None Include="Patch_Notes.md">
       <Filter>Arquivos de Recurso</Filter>
     </None>
   </ItemGroup>

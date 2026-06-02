@@ -1,8 +1,7 @@
-# Patch Notes v1.1
-- Implementação do método draw a partir do tipo Object
-- Inicialização padrões para valores do tipo Transform
-
+# Patch Notes v1.1.1
+- Criação do conceito de Factory no projeto
+- Criação do objectFactory
+	- Criação do método drawRectangle()
 
 ## TO-DO
-- Organizar a criação do Object (a main está muito poluída)
 - Implementar Câmera
