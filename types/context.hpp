@@ -5,8 +5,8 @@ class VertexShader;
 class FragmentShader;
 
 struct pipelineContext {
-	VertexShader* vs;
-	FragmentShader* fs;
+	VertexShader* vs = nullptr;
+	FragmentShader* fs = nullptr;
 	float deltaTime;
 	float time;
 	Transform transform;

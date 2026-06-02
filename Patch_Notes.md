@@ -1,7 +1,8 @@
-# Patch Notes v1.0.1
-- Tipo Object criado com os membros: Mesh, Transform, VertexShader, FragmentShader
-- Ainda não implementado em nenhuma chamada de draw
-- Removidos arquivos de Debug e de usuário do Visual Studio.
+# Patch Notes v1.1
+- Implementação do método draw a partir do tipo Object
+- Inicialização padrões para valores do tipo Transform
+
 
 ## TO-DO
-- Estudar POO em C++, principalmente passagem de parâmetros por cópias e com ponteiros
+- Organizar a criação do Object (a main está muito poluída)
+- Implementar Câmera

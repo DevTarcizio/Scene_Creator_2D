@@ -63,6 +63,33 @@ void Renderer::draw(const Mesh& m, pipelineContext& ctx) {
 	}
 }
 
+void Renderer::draw(const Object& obj, pipelineContext& ctx)
+{
+	Mesh* m = obj.getMesh();
+	VertexShader* vs = obj.getVertexShader();
+	FragmentShader* fs = obj.getFragmentShader();
+	Transform t = obj.getTransform();
+
+	ctx.vs = vs;
+	ctx.fs = fs;
+	ctx.transform = t;
+
+	const auto& vertices = m->getVertices();
+	const auto& indices = m->getIndices();
+
+	for (size_t i{ 0 }; i < indices.size(); i += 3) {
+		uint32_t i0 = indices[i];
+		uint32_t i1 = indices[i + 1];
+		uint32_t i2 = indices[i + 2];
+
+		vertexOut out0 = ctx.vs->process(vertices[i0], ctx);
+		vertexOut out1 = ctx.vs->process(vertices[i1], ctx);
+		vertexOut out2 = ctx.vs->process(vertices[i2], ctx);
+
+		rasterizer.drawTriangle(out0, out1, out2, *this, ctx);
+	}
+}
+
 void Renderer::clear(Color color)
 {
 	uint32_t c = color.toRGBA();

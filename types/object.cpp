@@ -24,6 +24,11 @@ Transform& Object::getTransform()
 	return transform;
 }
 
+const Transform& Object::getTransform() const
+{
+	return transform;
+}
+
 VertexShader* Object::getVertexShader() const
 {
 	return vertexShader;

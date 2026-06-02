@@ -4,10 +4,11 @@
 #include "engine/pipeline/fragmentShader.hpp"
 #include "types/context.hpp"
 #include "types/mesh.hpp"
-
+#include "types/object.hpp"
 
 int main() {
 
+	// Criação do object
 	vertex v1, v2, v3, v4, v5;
 	v1.position = { -0.5f, 0.6f };
 	v1.color = { 1.0f, 0.0f, 0.0f, 1.0f };
@@ -29,21 +30,21 @@ int main() {
 	};
 
 	Mesh mesh{ vertices, indices };
+	Mesh* m = &mesh;
+
+	Transform t{};
 
 	pipelineContext context {};
-
-	SinVertexShader sinVertexShader;
-	SinVertexShader* pointerSVS = &sinVertexShader;
-	SinFragmentShader sinFragmentShader;
-	SinFragmentShader* pointerSFS = &sinFragmentShader;
+	Object obj(m, t);
 	
-	context.vs = pointerSVS;
-	context.fs = pointerSFS;
-	context.transform.position.x += 0.0f;
-	context.transform.position.y += 0.0f;
-	context.transform.scale.x = 1.0f;
-	context.transform.scale.y = 1.0f;
+	SinVertexShader svs;
+	SinVertexShader* SVS{ &svs };
+	SinFragmentShader sfs;
+	SinFragmentShader* SFS{ &sfs };
+	obj.setVertexShader(SVS);
+	obj.setFragmentShader(SFS);
 
+	// Fluxo de janela
 	const int width{ 640 };
 	const int height{	480 };
 
@@ -83,11 +84,10 @@ int main() {
 		lastTime = currentTime;
 		context.deltaTime = deltaTime;
 		context.time += deltaTime;
-		context.transform.rotation += deltaTime;
 		
 
 		renderer.clear({ 0.0f, 0.0f, 0.0f, 1.0f });
-		renderer.draw(mesh, context);
+		renderer.draw(obj, context);
 
 		SDL_UpdateTexture(texture, nullptr, renderer.getFramebufferData(), width * sizeof(uint32_t));
 		SDL_RenderClear(render);

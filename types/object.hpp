@@ -13,6 +13,7 @@ public:
 
 	Mesh* getMesh() const;
 	Transform& getTransform();
+	const Transform& getTransform() const;
 	VertexShader* getVertexShader() const;
 	FragmentShader* getFragmentShader() const;
 

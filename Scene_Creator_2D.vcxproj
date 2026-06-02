@@ -157,6 +157,7 @@
     <ClInclude Include="types\vertex.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Patch_Notes.md" />
     <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

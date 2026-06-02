@@ -3,9 +3,9 @@
 #include "mat.hpp"
 
 struct Transform {
-	vec2f position;
-	vec2f scale;
-	float rotation;
+	vec2f position{0.0f, 0.0f};
+	vec2f scale{1.0f, 1.0f};
+	float rotation = 0.0f;
 
 	mat3 getMatrix() const {
 		mat3 out{ mat3::identity() };
