@@ -1,7 +1,14 @@
-# Patch Notes v1.1.1
-- Criação do conceito de Factory no projeto
-- Criação do objectFactory
-	- Criação do método drawRectangle()
+# Patch Notes v1.2
+- Explicitação dos espaços de coordenadas no vertex Shader
+- Implementação de viewSpace e NDCSpace
+- Implementãção dos processos de WorldSpace -> ViewSpace, e de o projeção de ViewSpace -> NDCSpace
+- Implementação da Camera
+	- Contendo Viewport, Position e Zoom
+		- Valores padrões (100, 100), (0, 0), 1	
+
+
 
 ## TO-DO
-- Implementar Câmera
+- Implementar Movimentação da Camera
+- Implementar Zoom dinamico, possivelmente via ImGUI
+- Implementar conceito de Cena

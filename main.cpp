@@ -11,8 +11,12 @@ int main() {
 
 	// Criação do object
 	Object obj = createRectangle();
+	obj.getTransform().position = { 25, 0 };
 	pipelineContext context{};
 
+	Camera c;
+	c.position = { 25, 0 };
+	context.camera = &c;
 
 	// Fluxo de janela
 	const int width{ 640 };
