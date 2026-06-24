@@ -3,6 +3,11 @@
 
 Rasterizer::Rasterizer(int w, int h) : width(w), height(h), vertStage(width, height) {}
 
+void Rasterizer::bindFragmentShader(FragmentShader* fs)
+{
+	currentFS = fs;
+}
+
 Color Rasterizer::applyFragmentShader(screenVertex& p, screenVertex& p0, screenVertex& p1, screenVertex& p2, float w0, float w1, float w2, pipelineContext& ctx)
 {
 	fragment frag;
@@ -13,7 +18,7 @@ Color Rasterizer::applyFragmentShader(screenVertex& p, screenVertex& p0, screenV
 		p1.color * w1 +
 		p2.color * w2;
 
-	return ctx.fs->process(frag, ctx);
+	return currentFS->process(frag, ctx);
 }
 
 void Rasterizer::drawLine(vertexOut v0, vertexOut v1, Renderer& renderer)

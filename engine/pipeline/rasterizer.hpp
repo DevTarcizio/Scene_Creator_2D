@@ -14,6 +14,7 @@ class Rasterizer {
 public:
 	Rasterizer(int w, int h);
 
+	void bindFragmentShader(FragmentShader* fs);
 	Color applyFragmentShader(
 		screenVertex& p,
 		screenVertex& p0,
@@ -33,4 +34,5 @@ private:
 
 	VertexStage vertStage;
 	math math;
+	FragmentShader* currentFS = nullptr;
 };

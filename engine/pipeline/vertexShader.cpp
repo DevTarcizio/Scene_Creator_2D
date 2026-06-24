@@ -15,19 +15,19 @@
     NDC Space
 */
 
-vertexOut SinVertexShader::process(const vertex& v, const pipelineContext& ctx)
+vertexOut SinVertexShader::process(const vertex& v, const pipelineContext& ctx, const Transform& t)
 {
 
     const Camera& c = *ctx.camera;
     vertex localVertex{};
 
-    float newY = v.position.y + std::sin(ctx.time - (v.position.x + ctx.transform.position.x) * 5.0f) * 0.25f;
+    float newY = v.position.y + std::sin(ctx.time - (v.position.x + t.position.x) * 5.0f) * 0.25f;
     
     localVertex.position.x = v.position.x;
     localVertex.position.y = newY;
 
     vec3f LocalPosition = { localVertex.position.x, localVertex.position.y, 1.0f };
-    mat3 matrixTransform = ctx.transform.getMatrix();
+    mat3 matrixTransform = t.getMatrix();
     vec3f WorldPosition = matrixTransform * LocalPosition;
 
     float halfWidth = ( c.viewport.x / c.zoom ) * 0.5f;

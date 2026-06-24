@@ -27,7 +27,6 @@ Object createRectangle()
 	);
 
 	Transform transform;
-
 	Object obj(mesh, transform);
 
 	obj.setFragmentShader(new SinFragmentShader());

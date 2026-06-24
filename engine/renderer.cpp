@@ -28,51 +28,14 @@ void Renderer::setOffPixel(screenVertex& v)
 	framebuffer[index] = 0xFFFFFFFF;
 }
 
-void Renderer::draw(vertex v0, vertex v1, pipelineContext& ctx)
-{
-	vertexOut out0 = ctx.vs->process(v0, ctx);
-	vertexOut out1 = ctx.vs->process(v1, ctx);
-
-	rasterizer.drawLine(out0, out1, *this);
-}
-
-void Renderer::draw(vertex v0, vertex v1, vertex v2, pipelineContext& ctx)
-{
-	vertexOut out0 = ctx.vs->process(v0, ctx);
-	vertexOut out1 = ctx.vs->process(v1, ctx);
-	vertexOut out2 = ctx.vs->process(v2, ctx);
-
-
-	rasterizer.drawTriangle(out0, out1, out2, *this, ctx);
-}
-
-void Renderer::draw(const Mesh& m, pipelineContext& ctx) {
-	const auto& vertices = m.getVertices();
-	const auto& indices = m.getIndices();
-	
-	for (size_t i{ 0 }; i < indices.size(); i += 3) {
-		uint32_t i0 = indices[i];
-		uint32_t i1 = indices[i + 1];
-		uint32_t i2 = indices[i + 2];
-	
-		vertexOut out0 = ctx.vs->process(vertices[i0], ctx);
-		vertexOut out1 = ctx.vs->process(vertices[i1], ctx);
-		vertexOut out2 = ctx.vs->process(vertices[i2], ctx);
-
-		rasterizer.drawTriangle(out0, out1, out2, *this, ctx);
-	}
-}
-
 void Renderer::draw(const Object& obj, pipelineContext& ctx)
 {
 	Mesh* m = obj.getMesh();
+	Transform t = obj.getTransform();
 	VertexShader* vs = obj.getVertexShader();
 	FragmentShader* fs = obj.getFragmentShader();
-	Transform t = obj.getTransform();
 
-	ctx.vs = vs;
-	ctx.fs = fs;
-	ctx.transform = t;
+	rasterizer.bindFragmentShader(fs);
 
 	const auto& vertices = m->getVertices();
 	const auto& indices = m->getIndices();
@@ -82,9 +45,9 @@ void Renderer::draw(const Object& obj, pipelineContext& ctx)
 		uint32_t i1 = indices[i + 1];
 		uint32_t i2 = indices[i + 2];
 
-		vertexOut out0 = ctx.vs->process(vertices[i0], ctx);
-		vertexOut out1 = ctx.vs->process(vertices[i1], ctx);
-		vertexOut out2 = ctx.vs->process(vertices[i2], ctx);
+		vertexOut out0 = vs->process(vertices[i0], ctx, t);
+		vertexOut out1 = vs->process(vertices[i1], ctx, t);
+		vertexOut out2 = vs->process(vertices[i2], ctx, t);
 
 		rasterizer.drawTriangle(out0, out1, out2, *this, ctx);
 	}
