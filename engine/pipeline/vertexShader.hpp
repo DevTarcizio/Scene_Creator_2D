@@ -8,7 +8,9 @@ class VertexShader {
 
 public: 
 	// Função virtual pura 
-	virtual vertexOut process(const vertex& v, const pipelineContext& ctx, const Transform& t) = 0; 
+	virtual vertexOut process(
+		const vertex& v, const pipelineContext& ctx, const Transform& t, const mat3& mvp
+	) = 0; 
 	virtual ~VertexShader() {}; 
 
 };
@@ -17,5 +19,7 @@ public:
 class SinVertexShader : public VertexShader {
 
 public:
-	vertexOut process(const vertex& v, const pipelineContext& ctx, const Transform& t) override;
+	vertexOut process(
+		const vertex& v, const pipelineContext& ctx, const Transform& t, const mat3& mvp
+	) override;
 };

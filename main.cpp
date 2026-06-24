@@ -13,9 +13,13 @@
 
 int main() {
 
-	// Criação do object
-	Object obj = createRectangle();
+	// Criação do objeto
+	Object obj1 = createRectangle();
+	Object obj2 = createRectangle();
+	obj2.getTransform().position.x = 2;
 	pipelineContext context{};
+
+
 
 	Camera c;
 	context.camera = &c;
@@ -100,10 +104,17 @@ int main() {
 			ImGui::SliderFloat(" ", &c.zoom, 0.1f, 100.0f);
 		}
 		ImGui::End();
+
+		if (ImGui::Begin("Objeto 2")) {
+			ImGui::Text("Posição");
+			ImGui::SliderFloat2("Posição X/Y", &obj2.getTransform().position.x, -10.0f, 10.0f);
+		}
+		ImGui::End();
 		//===========================================================
 
 		renderer.clear({ 0.0f, 0.0f, 0.0f, 1.0f });
-		renderer.draw(obj, context);
+		renderer.draw(obj1, context);
+		renderer.draw(obj2, context);
 
 		SDL_UpdateTexture(texture, nullptr, renderer.getFramebufferData(), width * sizeof(uint32_t));
 		SDL_RenderClear(render);

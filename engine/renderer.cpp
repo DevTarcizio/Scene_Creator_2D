@@ -37,6 +37,9 @@ void Renderer::draw(const Object& obj, pipelineContext& ctx)
 
 	rasterizer.bindFragmentShader(fs);
 
+	// Matrix MVP - Projection * View * Model
+	mat3 mvpMatrix = ctx.camera->getProjectionMatrix() * ctx.camera->getViewMatrix() * t.getMatrix();
+
 	const auto& vertices = m->getVertices();
 	const auto& indices = m->getIndices();
 
@@ -45,9 +48,9 @@ void Renderer::draw(const Object& obj, pipelineContext& ctx)
 		uint32_t i1 = indices[i + 1];
 		uint32_t i2 = indices[i + 2];
 
-		vertexOut out0 = vs->process(vertices[i0], ctx, t);
-		vertexOut out1 = vs->process(vertices[i1], ctx, t);
-		vertexOut out2 = vs->process(vertices[i2], ctx, t);
+		vertexOut out0 = vs->process(vertices[i0], ctx, t, mvpMatrix);
+		vertexOut out1 = vs->process(vertices[i1], ctx, t, mvpMatrix);
+		vertexOut out2 = vs->process(vertices[i2], ctx, t, mvpMatrix);
 
 		rasterizer.drawTriangle(out0, out1, out2, *this, ctx);
 	}

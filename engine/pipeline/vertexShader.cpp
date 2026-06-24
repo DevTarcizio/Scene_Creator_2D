@@ -15,7 +15,7 @@
     NDC Space
 */
 
-vertexOut SinVertexShader::process(const vertex& v, const pipelineContext& ctx, const Transform& t)
+vertexOut SinVertexShader::process(const vertex& v, const pipelineContext& ctx, const Transform& t, const mat3& mvp)
 {
 
     const Camera& c = *ctx.camera;
@@ -26,24 +26,16 @@ vertexOut SinVertexShader::process(const vertex& v, const pipelineContext& ctx, 
     localVertex.position.x = v.position.x;
     localVertex.position.y = newY;
 
+    // Vertices Locais
     vec3f LocalPosition = { localVertex.position.x, localVertex.position.y, 1.0f };
-    mat3 matrixTransform = t.getMatrix();
-    vec3f WorldPosition = matrixTransform * LocalPosition;
 
-    float halfWidth = ( c.viewport.x / c.zoom ) * 0.5f;
-    float halfHeight = (c.viewport.y / c.zoom) * 0.5f;
-
-    vec3f ViewPosition = { WorldPosition.x - c.position.x, WorldPosition.y - c.position.y, 1.0f };
-    vec3f NDCPosition = { 
-        ViewPosition.x / halfWidth, 
-        ViewPosition.y / halfHeight,
-        1.0f
-    };
+    // Uso da Model View Projection Matrix calculado no renderer::draw
+    vec3f finalPosition = mvp * LocalPosition;
 
     vertexOut out;
     out.color = v.color;
-    out.position.x = NDCPosition.x;
-    out.position.y = NDCPosition.y;
+    out.position.x = finalPosition.x;
+    out.position.y = finalPosition.y;
     out.position.z = 0;
     out.position.w = 1;
 
