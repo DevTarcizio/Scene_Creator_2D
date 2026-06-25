@@ -11,3 +11,12 @@ Color SinFragmentShader::process(const fragment& frag, const pipelineContext& ct
     out.a = 1.0f;
     return out;
 }
+
+Color TextureFragmentShader::process(const fragment& frag, const pipelineContext& ctx)
+{
+    if (ctx.activeTexture == nullptr) {
+        return Color(1.0f, 0.0f, 1.0f, 1.0f);
+    }
+
+    return ctx.activeTexture->sample(frag.uv);
+}

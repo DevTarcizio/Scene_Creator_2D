@@ -34,6 +34,7 @@ void Renderer::draw(const Object& obj, pipelineContext& ctx)
 	Transform t = obj.getTransform();
 	VertexShader* vs = obj.getVertexShader();
 	FragmentShader* fs = obj.getFragmentShader();
+	ctx.activeTexture = obj.getTexture();
 
 	rasterizer.bindFragmentShader(fs);
 

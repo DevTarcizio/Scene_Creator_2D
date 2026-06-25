@@ -1,8 +1,9 @@
-# Patch Notes v1.3.1
+# Patch Notes v1.4
 
 ## Novas Funcionalidades
 
-* **Coordenadas UV:** Inicio do mapeamento de coordenadas UV para a implementaçao de texturas no objeto
+* **Texturas:** Agora o projeto suporta o uso de texturas nos objetos
+
 ## Refatoração
 
 ## TO-DO

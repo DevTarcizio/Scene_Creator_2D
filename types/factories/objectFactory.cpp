@@ -30,10 +30,12 @@ Object createRectangle()
 		}
 	);
 
-	Transform transform;
-	Object obj(mesh, transform);
+	auto* texture = new Texture("resources/textures/grass_block.png");
 
-	obj.setFragmentShader(new SinFragmentShader());
+	Transform transform;
+	Object obj(mesh, transform, texture);
+
+	obj.setFragmentShader(new TextureFragmentShader());
 	obj.setVertexShader(new SinVertexShader());
 
 	return obj;

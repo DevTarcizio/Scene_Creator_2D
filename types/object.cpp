@@ -1,6 +1,6 @@
 #include "object.hpp"
 
-Object::Object(Mesh* m, const Transform& t) : mesh(m), transform(t) {
+Object::Object(Mesh* m, const Transform& t, Texture* texture) : mesh(m), transform(t), tex(texture) {
 
 }
 
@@ -37,5 +37,10 @@ VertexShader* Object::getVertexShader() const
 FragmentShader* Object::getFragmentShader() const
 {
 	return fragmentShader;
+}
+
+Texture* Object::getTexture() const
+{
+	return tex;
 }
 

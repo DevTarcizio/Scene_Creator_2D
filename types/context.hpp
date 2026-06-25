@@ -1,9 +1,10 @@
 #pragma once
-#include "transform.hpp"
+#include "texture.hpp"
 #include "camera.hpp"
 
 struct pipelineContext {
 	float deltaTime;
 	float time;
 	Camera* camera;
+	Texture* activeTexture;
 };

@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="imgui">
-      <UniqueIdentifier>{1368b653-279a-4154-b638-73e07d063e5a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="imgui\backends">
-      <UniqueIdentifier>{296c8072-17a4-456c-bee3-628bff67de86}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Types">
       <UniqueIdentifier>{f5fb6c97-993e-4dbf-a5c7-ad5e1c8d673c}</UniqueIdentifier>
     </Filter>
@@ -37,6 +31,18 @@
     <Filter Include="Pipeline\Source Files">
       <UniqueIdentifier>{db7cbdba-047e-4d12-975f-0fef6efd7858}</UniqueIdentifier>
     </Filter>
+    <Filter Include="externals">
+      <UniqueIdentifier>{c291adc2-8d5f-40ba-a295-80d077260d69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externals\imgui">
+      <UniqueIdentifier>{1368b653-279a-4154-b638-73e07d063e5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externals\imgui\backends">
+      <UniqueIdentifier>{296c8072-17a4-456c-bee3-628bff67de86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="externals\stb_image">
+      <UniqueIdentifier>{72df5497-8a79-4195-b607-1d7a633d91a3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -49,25 +55,25 @@
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="external\imgui\imgui.cpp">
-      <Filter>imgui</Filter>
+      <Filter>externals\imgui</Filter>
     </ClCompile>
     <ClCompile Include="external\imgui\imgui_demo.cpp">
-      <Filter>imgui</Filter>
+      <Filter>externals\imgui</Filter>
     </ClCompile>
     <ClCompile Include="external\imgui\imgui_draw.cpp">
-      <Filter>imgui</Filter>
+      <Filter>externals\imgui</Filter>
     </ClCompile>
     <ClCompile Include="external\imgui\imgui_tables.cpp">
-      <Filter>imgui</Filter>
+      <Filter>externals\imgui</Filter>
     </ClCompile>
     <ClCompile Include="external\imgui\imgui_widgets.cpp">
-      <Filter>imgui</Filter>
+      <Filter>externals\imgui</Filter>
     </ClCompile>
     <ClCompile Include="external\imgui\backends\imgui_impl_sdl3.cpp">
-      <Filter>imgui\backends</Filter>
+      <Filter>externals\imgui\backends</Filter>
     </ClCompile>
     <ClCompile Include="external\imgui\backends\imgui_impl_sdlrenderer3.cpp">
-      <Filter>imgui\backends</Filter>
+      <Filter>externals\imgui\backends</Filter>
     </ClCompile>
     <ClCompile Include="types\mat.hpp">
       <Filter>Types\Header Files</Filter>
@@ -93,6 +99,12 @@
     <ClCompile Include="engine\pipeline\fragmentShader.cpp">
       <Filter>Pipeline\Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="external\stb_image\stb_image.cpp">
+      <Filter>externals\stb_image</Filter>
+    </ClCompile>
+    <ClCompile Include="types\texture.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\math.hpp">
@@ -102,28 +114,28 @@
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="external\imgui\imconfig.h">
-      <Filter>imgui</Filter>
+      <Filter>externals\imgui</Filter>
     </ClInclude>
     <ClInclude Include="external\imgui\imgui.h">
-      <Filter>imgui</Filter>
+      <Filter>externals\imgui</Filter>
     </ClInclude>
     <ClInclude Include="external\imgui\imgui_internal.h">
-      <Filter>imgui</Filter>
+      <Filter>externals\imgui</Filter>
     </ClInclude>
     <ClInclude Include="external\imgui\imstb_rectpack.h">
-      <Filter>imgui</Filter>
+      <Filter>externals\imgui</Filter>
     </ClInclude>
     <ClInclude Include="external\imgui\imstb_textedit.h">
-      <Filter>imgui</Filter>
+      <Filter>externals\imgui</Filter>
     </ClInclude>
     <ClInclude Include="external\imgui\imstb_truetype.h">
-      <Filter>imgui</Filter>
+      <Filter>externals\imgui</Filter>
     </ClInclude>
     <ClInclude Include="external\imgui\backends\imgui_impl_sdl3.h">
-      <Filter>imgui\backends</Filter>
+      <Filter>externals\imgui\backends</Filter>
     </ClInclude>
     <ClInclude Include="external\imgui\backends\imgui_impl_sdlrenderer3.h">
-      <Filter>imgui\backends</Filter>
+      <Filter>externals\imgui\backends</Filter>
     </ClInclude>
     <ClInclude Include="types\vertex.hpp">
       <Filter>Types\Header Files</Filter>
@@ -163,6 +175,12 @@
     </ClInclude>
     <ClInclude Include="engine\pipeline\fragmentShader.hpp">
       <Filter>Pipeline\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="external\stb_image\stb_image.h">
+      <Filter>externals\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="types\texture.hpp">
+      <Filter>Types\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
