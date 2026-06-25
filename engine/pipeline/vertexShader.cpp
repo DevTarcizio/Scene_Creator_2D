@@ -38,6 +38,7 @@ vertexOut SinVertexShader::process(const vertex& v, const pipelineContext& ctx, 
     out.position.y = finalPosition.y;
     out.position.z = 0;
     out.position.w = 1;
+    out.uv = v.uv;
 
     return out;
 }
