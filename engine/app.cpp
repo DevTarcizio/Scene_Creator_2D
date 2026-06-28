@@ -38,6 +38,11 @@ bool App::init()
 	ImGui_ImplSDLRenderer3_Init(render);
 	//===============================================================
 
+	//===============================================================
+	// Conexão da Scena a ActiveScene
+	//===============================================================
+	ActiveScene = std::make_unique<EditorScene>();
+	//===============================================================
 	return true;
 }
 
@@ -105,7 +110,7 @@ void App::renderScene()
 	renderer.clear({ 0.0f, 0.0f, 0.0f, 1.0f });
 
 	if (ActiveScene) {
-		ActiveScene->draw();
+		ActiveScene->draw(renderer, ctx);
 	}
 
 	SDL_UpdateTexture(texture, nullptr, renderer.getFramebufferData(), WIDTH * sizeof(uint32_t));

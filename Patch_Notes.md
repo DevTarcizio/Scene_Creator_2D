@@ -1,14 +1,14 @@
-# Patch Notes v1.5
+# Patch Notes v1.5.1
 
 ## Novas Funcionalidades
 
-* **Núcleo da Engine (App Core):** Criação da classe `App` para gerenciar o estado global, o tempo (Delta Time) e o ciclo de vida da aplicação de forma orientada a objetos.
+* **Sistemas de Cenas Implementado:** Implementação da classe `EditorScene`. A cena agora atua como dona (owner) da Câmera e de um contêiner de múltiplos objetos (utilizando `std::unique_ptr` e semântica de movimento `std::move` para garantir o Memory Safety), renderizando a geometria dinamicamente a cada quadro.
 
 ## Refatoração
 
-* **Isolamento da `main`:** Todo o código procedural de configuração do SDL3 e ImGui foi removido da função principal, que agora apenas instancializa e roda a `App`.
-* **Arquitertura do GameLoop:** O laço principal foi rigidamente fatiado seguindo o padrão da indústria: `processInput()` (Eventos), `update()` (Lógica) e `renderScene()` (Desenho).
-* **Fundação da Scene:** Criação da classe base abstrata `Scene`, preparando o terreno para gerenciar múltiplos objetos.
+* **Injeção de Dependências:** O rasterizador (`Renderer`) e o `pipelineContext` agora são emprestados por referência (&) da Aplicação para a Cena a cada quadro, eliminando variáveis globais e acoplamentos.
 
 ## TO-DO
-- Implementar a classe Concreta `EditorScene`
+* **Sistema de Entindades:** Transformar os objetos hardcoded em Entidades dinâmicas que podem ser adicionadas ou removidas da cena em tempo de execução.
+* **Seleção de Objetos:** Implementar lógica matemática para converter o clique do mouse em coordenadas do mundo (World Space) para selecionar objetos na cena.
+* **Inspetor de Propriedades:** Fazer o ImGui exibir dinamicamente os dados (Posição, Escala, Cor) do objeto que estiver atualmente selecionado na `EditorScene`.
