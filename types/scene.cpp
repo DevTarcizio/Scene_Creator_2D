@@ -7,9 +7,6 @@ EditorScene::EditorScene()
 {
 	camera.position = { 0, 0 };
 	camera.zoom = 25.0f;
-
-	auto obj = std::make_unique<Object>(createRectangle());
-	objects.push_back(std::move(obj));
 }
 
 void EditorScene::draw(Renderer& renderer, pipelineContext& ctx)
@@ -27,6 +24,14 @@ void EditorScene::update()
 	if (ImGui::Begin("Camera")) {
 		ImGui::SliderFloat2("Posição X/Y", &camera.position.x, -100.f, 100.f);
 		ImGui::SliderFloat("Zoom", &camera.zoom, 0.1f, 50.f);
+	}
+	ImGui::End();
+
+	if (ImGui::Begin("Cena")) {
+		if (ImGui::Button("Criar Objeto")) {
+			auto obj = std::make_unique<Object>(createRectangle());
+			objects.push_back(std::move(obj));
+		}
 	}
 	ImGui::End();
 }
