@@ -103,6 +103,9 @@
       <Filter>externals\stb_image</Filter>
     </ClCompile>
     <ClCompile Include="types\texture.cpp">
+      <Filter>Types\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\app.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
@@ -181,6 +184,12 @@
     </ClInclude>
     <ClInclude Include="types\texture.hpp">
       <Filter>Types\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="types\scene.hpp">
+      <Filter>Types\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\app.hpp">
+      <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

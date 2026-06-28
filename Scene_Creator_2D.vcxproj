@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="engine\app.cpp" />
     <ClCompile Include="engine\pipeline\fragmentShader.cpp" />
     <ClCompile Include="engine\pipeline\rasterizer.cpp" />
     <ClCompile Include="engine\pipeline\vertexStage.cpp" />
@@ -153,6 +154,7 @@
     <ClCompile Include="types\texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="engine\app.hpp" />
     <ClInclude Include="engine\pipeline\fragmentShader.hpp" />
     <ClInclude Include="engine\pipeline\rasterizer.hpp" />
     <ClInclude Include="engine\pipeline\vertexShader.hpp" />
@@ -174,6 +176,7 @@
     <ClInclude Include="types\fragment.hpp" />
     <ClInclude Include="types\mesh.hpp" />
     <ClInclude Include="types\object.hpp" />
+    <ClInclude Include="types\scene.hpp" />
     <ClInclude Include="types\texture.hpp" />
     <ClInclude Include="types\transform.hpp" />
     <ClInclude Include="types\vec.hpp" />
