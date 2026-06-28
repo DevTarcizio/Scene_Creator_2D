@@ -12,6 +12,8 @@ public:
 	void setVertexShader(VertexShader* vs);
 	void setFragmentShader(FragmentShader* fs);
 
+	bool contains(float x, float y) const;
+
 	Mesh* getMesh() const;
 	Transform& getTransform();
 	const Transform& getTransform() const;

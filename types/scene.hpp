@@ -21,6 +21,7 @@ public:
 protected:
 	std::vector<std::unique_ptr<Object>> objects;
 	Camera camera;
+	Object* selectedObject = nullptr;
 };
 
 class EditorScene : public Scene {

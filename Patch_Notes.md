@@ -1,14 +1,10 @@
-# Patch Notes v1.6.2
+# Patch Notes v1.6.3
 
 ## Novas Funcionalidades
 
-* **Matemática de Mouse Picking:** Implementação do motor matemático para seleção de objetos no mundo. O sistema captura as coordenadas do ecrã (SDL/ImGui), normaliza-as para o espaço de dispositivo (NDC) lidando dinamicamente com o redimensionamento da janela, e aplica transformações matriciais.////////
-* **Matrizes Inversas: ** Expansão da biblioteca de álgebra linear `(mat3)` com métodos algébricos espaciais de custo O(1) para calcular a Inversa da Projeção e a Inversa da Visualização (View), permitindo a viagem matemática de volta do ecrã para o World Space.
-
-## Refatoração
-* **Separação de Contextos:** Desacoplamento arquitetural do estado da Engine. O antigo contexto monolítico foi dividido em dois
-	* `UpdateContext`: Estrutura Read-Only `(const &)` injetada na lógica de atualização, contendo dados do ecrã e estado do mundo. 
-	* `PipelineContext`: Máquina de estados mutável injetada no rasterizador, exclusiva para dados de desenho (Draw Calls).
+* **Sistema de Seleção:** Implementação final da lógica de colisão ponto-retângulo (AABB), permitindo a seleção interativa de objetos no World Space via clique do rato.
+* **Inspetor de Propridades:** Adição de um painel de controlo no ImGui que se liga dinamicamente ao objeto selecionado, permitindo a edição de transformações (Posição X/Y) em tempo real, sem necessidade de recompilação.
+* **Detecção de Colisão:** criação do método de colisão com a introdução do método `Object::contains()`, encapsulando a lógica geométrica e promovendo o princípio de coesão na classe `Object`.
 
 ## TO-DO
 * **Inspetor de Propriedades:** Fazer o ImGui exibir dinamicamente os dados (Posição, Escala, Cor) do objeto que estiver atualmente selecionado na `EditorScene`.

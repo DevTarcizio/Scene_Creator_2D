@@ -14,6 +14,20 @@ void Object::setFragmentShader(FragmentShader* fs)
 	fragmentShader = fs;
 }
 
+bool Object::contains(float x, float y) const
+{
+	float leftBorder = transform.position.x - (transform.scale.x / 2.0f);
+	float rightBorder = transform.position.x + (transform.scale.x / 2.0f);
+	float bottomBorder = transform.position.y - (transform.scale.y / 2.0f);
+	float topBorder = transform.position.y + (transform.scale.y / 2.0f);
+
+	if ((x >= leftBorder && x <= rightBorder) && (y >= bottomBorder && y <= topBorder)) {
+		return true;
+	}
+
+	return false;
+}
+
 Mesh* Object::getMesh() const
 {
 	return mesh;

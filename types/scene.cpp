@@ -3,7 +3,7 @@
 #include "factories/objectFactory.hpp"
 #include "context.hpp"
 
-EditorScene::EditorScene() 
+EditorScene::EditorScene()
 {
 	camera.position = { 0, 0 };
 	camera.zoom = 25.0f;
@@ -51,10 +51,22 @@ void EditorScene::update(const updateContext& ctx)
 
 		vec3f WorldPos = invView * (invProj * ndcPos);
 
-		std::cout << "MundoX: " << WorldPos.x << " MundoY: " << WorldPos.y << std::endl;
+		for (std::unique_ptr<Object>& obj : objects) {
+			if (obj->contains(WorldPos.x, WorldPos.y)) {
+				selectedObject = obj.get();
+			}
+		}
+	}
+
+	if (selectedObject != nullptr) {
+		if (ImGui::Begin("Inspetor")) {
+			ImGui::SliderFloat2("Posição X/Y", &selectedObject->getTransform().position.x, -100.f, 100.f);
+		}
+		ImGui::End();
 	}
 }
 
 EditorScene::~EditorScene()
 {
 }
+
