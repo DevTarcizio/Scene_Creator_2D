@@ -11,6 +11,7 @@ screenVertex VertexStage::process(const vertexOut& v)
 	out.position.x = (v.position.x + 1.0f) * 0.5f * width;
 	out.position.y = (1.0 - (v.position.y + 1.0f) * 0.5f) * height;
 	out.color = v.color;
+	out.uv = v.uv;
 
 	return out;
 }

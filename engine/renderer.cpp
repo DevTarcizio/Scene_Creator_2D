@@ -28,36 +28,30 @@ void Renderer::setOffPixel(screenVertex& v)
 	framebuffer[index] = 0xFFFFFFFF;
 }
 
-void Renderer::draw(vertex v0, vertex v1, pipelineContext& ctx)
+void Renderer::draw(const Object& obj, pipelineContext& ctx)
 {
-	vertexOut out0 = ctx.vs->process(v0, ctx);
-	vertexOut out1 = ctx.vs->process(v1, ctx);
+	Mesh* m = obj.getMesh();
+	Transform t = obj.getTransform();
+	VertexShader* vs = obj.getVertexShader();
+	FragmentShader* fs = obj.getFragmentShader();
+	ctx.activeTexture = obj.getTexture();
 
-	rasterizer.drawLine(out0, out1, *this);
-}
+	rasterizer.bindFragmentShader(fs);
 
-void Renderer::draw(vertex v0, vertex v1, vertex v2, pipelineContext& ctx)
-{
-	vertexOut out0 = ctx.vs->process(v0, ctx);
-	vertexOut out1 = ctx.vs->process(v1, ctx);
-	vertexOut out2 = ctx.vs->process(v2, ctx);
+	// Matrix MVP - Projection * View * Model
+	mat3 mvpMatrix = ctx.camera->getProjectionMatrix() * ctx.camera->getViewMatrix() * t.getMatrix();
 
+	const auto& vertices = m->getVertices();
+	const auto& indices = m->getIndices();
 
-	rasterizer.drawTriangle(out0, out1, out2, *this, ctx);
-}
-
-void Renderer::draw(const Mesh& m, pipelineContext& ctx) {
-	const auto& vertices = m.getVertices();
-	const auto& indices = m.getIndices();
-	
 	for (size_t i{ 0 }; i < indices.size(); i += 3) {
 		uint32_t i0 = indices[i];
 		uint32_t i1 = indices[i + 1];
 		uint32_t i2 = indices[i + 2];
-	
-		vertexOut out0 = ctx.vs->process(vertices[i0], ctx);
-		vertexOut out1 = ctx.vs->process(vertices[i1], ctx);
-		vertexOut out2 = ctx.vs->process(vertices[i2], ctx);
+
+		vertexOut out0 = vs->process(vertices[i0], ctx, t, mvpMatrix);
+		vertexOut out1 = vs->process(vertices[i1], ctx, t, mvpMatrix);
+		vertexOut out2 = vs->process(vertices[i2], ctx, t, mvpMatrix);
 
 		rasterizer.drawTriangle(out0, out1, out2, *this, ctx);
 	}

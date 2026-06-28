@@ -1,13 +1,16 @@
 #pragma once 
 #include "../../types/vertex.hpp" 
 #include "../../types/context.hpp"
+#include "../../types/transform.hpp"
 #include <cmath>
 
 class VertexShader { 
 
 public: 
 	// Função virtual pura 
-	virtual vertexOut process(const vertex& v, const pipelineContext& ctx) = 0; 
+	virtual vertexOut process(
+		const vertex& v, const pipelineContext& ctx, const Transform& t, const mat3& mvp
+	) = 0; 
 	virtual ~VertexShader() {}; 
 
 };
@@ -16,5 +19,7 @@ public:
 class SinVertexShader : public VertexShader {
 
 public:
-	vertexOut process(const vertex& v, const pipelineContext& ctx) override;
+	vertexOut process(
+		const vertex& v, const pipelineContext& ctx, const Transform& t, const mat3& mvp
+	) override;
 };

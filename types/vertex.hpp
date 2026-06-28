@@ -6,17 +6,20 @@
 struct vertex {
 	vec2f position;
 	Color color;
+	vec2f uv;
 };
 
 // EM NDC POR ENQUANTO, SERÁ TROCADO DEPOIS
 struct vertexOut {
 	vec4f position;
 	Color color;
+	vec2f uv;
 };
 
 struct screenVertex {
 	vec2i position;
 	Color color;
+	vec2f uv;
 
 	bool operator==(const vertex& other) const {
 		return position.x == other.position.x && position.y == other.position.y;

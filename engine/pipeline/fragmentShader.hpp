@@ -12,8 +12,12 @@ public:
 	
 };
 
-
 class SinFragmentShader : public FragmentShader {
+public:
+	Color process(const fragment& frag, const pipelineContext& ctx) override;
+};
+
+class TextureFragmentShader : public FragmentShader {
 public:
 	Color process(const fragment& frag, const pipelineContext& ctx) override;
 };

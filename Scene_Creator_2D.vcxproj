@@ -105,7 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\Libraries\SDL3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)external\stb_image;$(ProjectDir)external\imgui;D:\Libraries\SDL3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -123,6 +123,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)external\stb_image;$(ProjectDir)external\imgui;D:\Libraries\SDL3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,33 +131,60 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="engine\app.cpp" />
     <ClCompile Include="engine\pipeline\fragmentShader.cpp" />
     <ClCompile Include="engine\pipeline\rasterizer.cpp" />
     <ClCompile Include="engine\pipeline\vertexStage.cpp" />
     <ClCompile Include="engine\renderer.cpp" />
+    <ClCompile Include="external\imgui\backends\imgui_impl_sdl3.cpp" />
+    <ClCompile Include="external\imgui\backends\imgui_impl_sdlrenderer3.cpp" />
+    <ClCompile Include="external\imgui\imgui.cpp" />
+    <ClCompile Include="external\imgui\imgui_demo.cpp" />
+    <ClCompile Include="external\imgui\imgui_draw.cpp" />
+    <ClCompile Include="external\imgui\imgui_tables.cpp" />
+    <ClCompile Include="external\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="external\stb_image\stb_image.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="math\math.cpp" />
     <ClCompile Include="engine\pipeline\vertexShader.cpp" />
+    <ClCompile Include="types\camera.hpp" />
+    <ClCompile Include="types\factories\objectFactory.cpp" />
     <ClCompile Include="types\mat.hpp" />
     <ClCompile Include="types\object.cpp" />
+    <ClCompile Include="types\scene.cpp" />
+    <ClCompile Include="types\texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="engine\app.hpp" />
     <ClInclude Include="engine\pipeline\fragmentShader.hpp" />
     <ClInclude Include="engine\pipeline\rasterizer.hpp" />
     <ClInclude Include="engine\pipeline\vertexShader.hpp" />
     <ClInclude Include="engine\pipeline\vertexStage.hpp" />
     <ClInclude Include="engine\renderer.hpp" />
+    <ClInclude Include="external\imgui\backends\imgui_impl_sdl3.h" />
+    <ClInclude Include="external\imgui\backends\imgui_impl_sdlrenderer3.h" />
+    <ClInclude Include="external\imgui\imconfig.h" />
+    <ClInclude Include="external\imgui\imgui.h" />
+    <ClInclude Include="external\imgui\imgui_internal.h" />
+    <ClInclude Include="external\imgui\imstb_rectpack.h" />
+    <ClInclude Include="external\imgui\imstb_textedit.h" />
+    <ClInclude Include="external\imgui\imstb_truetype.h" />
+    <ClInclude Include="external\stb_image\stb_image.h" />
     <ClInclude Include="math\math.hpp" />
     <ClInclude Include="types\color.hpp" />
     <ClInclude Include="types\context.hpp" />
+    <ClInclude Include="types\factories\objectFactory.hpp" />
     <ClInclude Include="types\fragment.hpp" />
     <ClInclude Include="types\mesh.hpp" />
     <ClInclude Include="types\object.hpp" />
+    <ClInclude Include="types\scene.hpp" />
+    <ClInclude Include="types\texture.hpp" />
     <ClInclude Include="types\transform.hpp" />
     <ClInclude Include="types\vec.hpp" />
     <ClInclude Include="types\vertex.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Patch_Notes.md" />
     <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

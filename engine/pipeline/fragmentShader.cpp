@@ -5,9 +5,18 @@ Color SinFragmentShader::process(const fragment& frag, const pipelineContext& ct
     float wave = 0.5f + 0.5f * std::sin(frag.position.x * 0.1f + ctx.time * 15.0f);
 
     Color out;
-    out.r = frag.color.r * wave;
-    out.g = frag.color.g * wave;
-    out.b = frag.color.b;
-    out.a = frag.color.a;
+    out.r = frag.uv.x;
+    out.g = frag.uv.y;
+    out.b = 0.0f;
+    out.a = 1.0f;
     return out;
+}
+
+Color TextureFragmentShader::process(const fragment& frag, const pipelineContext& ctx)
+{
+    if (ctx.activeTexture == nullptr) {
+        return Color(1.0f, 0.0f, 1.0f, 1.0f);
+    }
+
+    return ctx.activeTexture->sample(frag.uv);
 }

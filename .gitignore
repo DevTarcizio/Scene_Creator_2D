@@ -87,3 +87,6 @@ Release/
 *.obj
 *.pdb
 *.ilk
+
+# ImGui
+imgui.ini

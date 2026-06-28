@@ -14,6 +14,7 @@ class Rasterizer {
 public:
 	Rasterizer(int w, int h);
 
+	void bindFragmentShader(FragmentShader* fs);
 	Color applyFragmentShader(
 		screenVertex& p,
 		screenVertex& p0,
@@ -22,6 +23,7 @@ public:
 		float w0, float w1, float w2,
 		pipelineContext& ctx
 	);
+	vec2f interpolateAtributes(float w0, float w1, float w2, vec2f& uv0, vec2f& uv1, vec2f& uv2);
 
 	void drawLine(vertexOut v0, vertexOut v1, Renderer& renderer);
 	void drawTriangle(vertexOut v0, vertexOut v1, vertexOut v2, Renderer& renderer, pipelineContext& ctx);
@@ -33,4 +35,5 @@ private:
 
 	VertexStage vertStage;
 	math math;
+	FragmentShader* currentFS = nullptr;
 };
