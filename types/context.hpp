@@ -8,3 +8,10 @@ struct pipelineContext {
 	Camera* camera;
 	Texture* activeTexture;
 };
+
+struct updateContext {
+	float time;
+	float deltaTime;
+	int screenWidth;
+	int screenHeight;
+};

@@ -18,7 +18,7 @@ void EditorScene::draw(Renderer& renderer, pipelineContext& ctx)
 	}
 }
 
-void EditorScene::update()
+void EditorScene::update(const updateContext& ctx)
 {
 	ImGuiIO& io = ImGui::GetIO();
 	if (ImGui::Begin("Camera")) {
@@ -34,6 +34,25 @@ void EditorScene::update()
 		}
 	}
 	ImGui::End();
+
+	if (ImGui::IsMouseClicked(ImGuiMouseButton_Left) && !ImGui::GetIO().WantCaptureMouse) {
+		ImGuiIO& io = ImGui::GetIO();
+
+		float mouseX{ io.MousePos.x };
+		float mouseY{ io.MousePos.y };
+
+		float ndcX = (mouseX / ctx.screenWidth) * 2.0f - 1.0f;
+		float ndcY = (mouseY / ctx.screenHeight) * -2.0f + 1.0f;
+
+		vec3f ndcPos{ ndcX, ndcY, 1.0f };
+
+		mat3 invProj = camera.getInverseProjectionMatrix();
+		mat3 invView = camera.getInverseViewMatrix();
+
+		vec3f WorldPos = invView * (invProj * ndcPos);
+
+		std::cout << "MundoX: " << WorldPos.x << " MundoY: " << WorldPos.y << std::endl;
+	}
 }
 
 EditorScene::~EditorScene()

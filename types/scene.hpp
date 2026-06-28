@@ -14,7 +14,7 @@ public:
 	Scene() = default;
 
 	virtual void draw(Renderer& renderer, pipelineContext& ctx) = 0;
-	virtual void update() = 0;
+	virtual void update(const updateContext& ctx) = 0;
 	
 	virtual ~Scene() = default;
 
@@ -28,7 +28,7 @@ public:
 	EditorScene();
 
 	void draw(Renderer& renderer, pipelineContext& ctx) override;
-	void update() override;
+	void update(const updateContext& ctx) override;
 	
 	~EditorScene() override;
 };

@@ -28,7 +28,8 @@ private:
 	const int WIDTH;
 	const int HEIGHT;
 	Renderer renderer;
-	pipelineContext ctx;
+	pipelineContext ctx_p;
+	updateContext ctx_u;
 
 	SDL_Window* window = nullptr;
 	SDL_Renderer* render = nullptr;

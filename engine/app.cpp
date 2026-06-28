@@ -83,8 +83,12 @@ void App::update()
 	Uint64 currentTime = SDL_GetTicks();
 	float deltaTime = (currentTime - lastTime) / 1000.f;
 	lastTime = currentTime;
-	ctx.deltaTime = deltaTime;
-	ctx.time += deltaTime;
+	ctx_p.deltaTime = deltaTime;
+	ctx_p.time += deltaTime;
+	ctx_u.deltaTime = deltaTime;
+	ctx_u.time += deltaTime;
+
+	SDL_GetWindowSize(window, &ctx_u.screenWidth, &ctx_u.screenHeight);
 
 	//===========================================================
 	// Lógica do ImGui
@@ -101,7 +105,7 @@ void App::update()
 	//===========================================================
 
 	if (ActiveScene) {
-		ActiveScene->update();
+		ActiveScene->update(ctx_u);
 	}
 }
 
@@ -110,7 +114,7 @@ void App::renderScene()
 	renderer.clear({ 0.0f, 0.0f, 0.0f, 1.0f });
 
 	if (ActiveScene) {
-		ActiveScene->draw(renderer, ctx);
+		ActiveScene->draw(renderer, ctx_p);
 	}
 
 	SDL_UpdateTexture(texture, nullptr, renderer.getFramebufferData(), WIDTH * sizeof(uint32_t));
