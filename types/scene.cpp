@@ -6,7 +6,7 @@
 EditorScene::EditorScene()
 {
 	camera.position = { 0, 0 };
-	camera.zoom = 25.0f;
+	camera.zoom = 10.0f;
 }
 
 void EditorScene::draw(Renderer& renderer, pipelineContext& ctx)
@@ -16,13 +16,17 @@ void EditorScene::draw(Renderer& renderer, pipelineContext& ctx)
 	for (const auto& obj : objects) {
 		renderer.draw(*obj, ctx);
 	}
+
+	if (selectedObject != nullptr) {
+		gizmo.draw(renderer, ctx);
+	}
 }
 
 void EditorScene::update(const updateContext& ctx)
 {
 	ImGuiIO& io = ImGui::GetIO();
 	if (ImGui::Begin("Camera")) {
-		ImGui::SliderFloat2("Posição X/Y", &camera.position.x, -100.f, 100.f);
+		ImGui::SliderFloat2("Posição X/Y", &camera.position.x, -50.f, 50.f);
 		ImGui::SliderFloat("Zoom", &camera.zoom, 0.1f, 50.f);
 	}
 	ImGui::End();
@@ -55,14 +59,20 @@ void EditorScene::update(const updateContext& ctx)
 			if (obj->contains(WorldPos.x, WorldPos.y)) {
 				selectedObject = obj.get();
 			}
+			else {
+				selectedObject = nullptr;
+			}
 		}
 	}
 
 	if (selectedObject != nullptr) {
 		if (ImGui::Begin("Inspetor")) {
-			ImGui::SliderFloat2("Posição X/Y", &selectedObject->getTransform().position.x, -100.f, 100.f);
+			ImGui::SliderFloat2("Posição X/Y", &selectedObject->getTransform().position.x, -50.f, 50.f);
+			ImGui::SliderAngle("Rotação", &selectedObject->getTransform().rotation);
 		}
 		ImGui::End();
+
+		gizmo.attachTo(selectedObject);
 	}
 }
 

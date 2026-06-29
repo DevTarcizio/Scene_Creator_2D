@@ -17,7 +17,6 @@
 
 vertexOut SinVertexShader::process(const vertex& v, const pipelineContext& ctx, const Transform& t, const mat3& mvp)
 {
-
     const Camera& c = *ctx.camera;
     vertex localVertex{};
 
@@ -25,6 +24,31 @@ vertexOut SinVertexShader::process(const vertex& v, const pipelineContext& ctx, 
     
     localVertex.position.x = v.position.x;
     localVertex.position.y = newY;
+
+    // Vertices Locais
+    vec3f LocalPosition = { localVertex.position.x, localVertex.position.y, 1.0f };
+
+    // Uso da Model View Projection Matrix calculado no renderer::draw
+    vec3f finalPosition = mvp * LocalPosition;
+
+    vertexOut out;
+    out.color = v.color;
+    out.position.x = finalPosition.x;
+    out.position.y = finalPosition.y;
+    out.position.z = 0;
+    out.position.w = 1;
+    out.uv = v.uv;
+
+    return out;
+}
+
+vertexOut NormalVertexShader::process(const vertex& v, const pipelineContext& ctx, const Transform& t, const mat3& mvp)
+{
+    const Camera& c = *ctx.camera;
+    vertex localVertex{};
+
+    localVertex.position.x = v.position.x;
+    localVertex.position.y = v.position.y;
 
     // Vertices Locais
     vec3f LocalPosition = { localVertex.position.x, localVertex.position.y, 1.0f };

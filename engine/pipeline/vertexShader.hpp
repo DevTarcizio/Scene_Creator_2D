@@ -23,3 +23,12 @@ public:
 		const vertex& v, const pipelineContext& ctx, const Transform& t, const mat3& mvp
 	) override;
 };
+
+// Shader que não aplica nenhuma transformação!
+class NormalVertexShader : public VertexShader {
+
+public:
+	vertexOut process(
+		const vertex& v, const pipelineContext& ctx, const Transform& t, const mat3& mvp
+	) override;
+};

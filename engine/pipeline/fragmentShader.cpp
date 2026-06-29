@@ -20,3 +20,13 @@ Color TextureFragmentShader::process(const fragment& frag, const pipelineContext
 
     return ctx.activeTexture->sample(frag.uv);
 }
+
+Color NormalFragmentShader::process(const fragment& frag, const pipelineContext& ctx)
+{
+    Color out;
+    out.r = frag.color.r;
+    out.g = frag.color.g;
+    out.b = frag.color.b;
+    out.a = frag.color.a;
+    return out;
+}

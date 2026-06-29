@@ -5,6 +5,7 @@
 #include <backends/imgui_impl_sdl3.h>
 #include <backends/imgui_impl_sdlrenderer3.h>
 #include "object.hpp"
+#include "gizmo.hpp"
 
 class Renderer;
 struct pipelineContext;
@@ -21,6 +22,7 @@ public:
 protected:
 	std::vector<std::unique_ptr<Object>> objects;
 	Camera camera;
+	Gizmo gizmo;
 	Object* selectedObject = nullptr;
 };
 

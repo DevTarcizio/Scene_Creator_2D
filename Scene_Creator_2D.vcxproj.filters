@@ -111,6 +111,9 @@
     <ClCompile Include="types\scene.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="types\gizmo.cpp">
+      <Filter>Types\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\math.hpp">
@@ -193,6 +196,9 @@
     </ClInclude>
     <ClInclude Include="engine\app.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="types\gizmo.hpp">
+      <Filter>Types\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

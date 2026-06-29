@@ -19,7 +19,7 @@ bool App::init()
 	if (!window) return false;
 	render = SDL_CreateRenderer(window, 0);
 	if (!render) return false;
-	// Usando pixelformat AGBR pois assiim o RGBA é usado, e vice-versa
+	// Usando pixelformat ABGR pois assiim o RGBA é usado, e vice-versa
 	texture = SDL_CreateTexture(render, SDL_PIXELFORMAT_ABGR32, SDL_TEXTUREACCESS_STREAMING, WIDTH, HEIGHT);
 	if (!texture) return false;
 	//===============================================================

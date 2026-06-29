@@ -149,6 +149,7 @@
     <ClCompile Include="engine\pipeline\vertexShader.cpp" />
     <ClCompile Include="types\camera.hpp" />
     <ClCompile Include="types\factories\objectFactory.cpp" />
+    <ClCompile Include="types\gizmo.cpp" />
     <ClCompile Include="types\mat.hpp" />
     <ClCompile Include="types\object.cpp" />
     <ClCompile Include="types\scene.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="types\context.hpp" />
     <ClInclude Include="types\factories\objectFactory.hpp" />
     <ClInclude Include="types\fragment.hpp" />
+    <ClInclude Include="types\gizmo.hpp" />
     <ClInclude Include="types\mesh.hpp" />
     <ClInclude Include="types\object.hpp" />
     <ClInclude Include="types\scene.hpp" />

@@ -1,10 +1,12 @@
-# Patch Notes v1.6.3
+# Patch Notes v1.7
 
 ## Novas Funcionalidades
 
-* **Sistema de Seleção:** Implementação final da lógica de colisão ponto-retângulo (AABB), permitindo a seleção interativa de objetos no World Space via clique do rato.
-* **Inspetor de Propridades:** Adição de um painel de controlo no ImGui que se liga dinamicamente ao objeto selecionado, permitindo a edição de transformações (Posição X/Y) em tempo real, sem necessidade de recompilação.
-* **Detecção de Colisão:** criação do método de colisão com a introdução do método `Object::contains()`, encapsulando a lógica geométrica e promovendo o princípio de coesão na classe `Object`.
+* **Sistema de Gizmo Interativo:** Implementada a classe `Gizmo` para controle de transformações em tempo real. O sistema utiliza composição de objetos `(arrowX, arrowY)` para criar uma representação visual dos eixos de movimento, ancorada dinamicamente aos objetos selecionados; A movimentação a partir deles ainda não foi implementada
+* **Fábrica de Objetos:** Criação da função `createArrow(Color, Angle)` para suportar customização de cor e orientação angular, eliminando a redundância de código e otimizando a criação de entidades de interface.
+
+## Refatoração
+* **Shaders Novos Criados:** Criados 2 shaders novos que possuem a mesma função, são eles: `NormalVertexShader` e `NormalFragmentShader`, cuja possuem função única de passar a transformação adiante, sem transformações adicionais.
 
 ## TO-DO
-* **Inspetor de Propriedades:** Fazer o ImGui exibir dinamicamente os dados (Posição, Escala, Cor) do objeto que estiver atualmente selecionado na `EditorScene`.
+* **Implementação das transformações a partir dos gizmos**. 

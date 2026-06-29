@@ -2,6 +2,8 @@
 #include "vec.hpp"
 #include <cmath>
 
+constexpr auto M_PI = 3.14159265358979323846f;
+
 struct mat3 {
 	float m[3][3];
 
@@ -59,13 +61,15 @@ struct mat3 {
 	}
 
 	static mat3 rotation(float angle) {
+		float radAngle = angle * (M_PI / 180.f);
+		
 		mat3 m{ identity() };
 
-		m.m[0][0] = std::cos(angle);
-		m.m[1][1] = std::cos(angle);
+		m.m[0][0] = std::cos(radAngle);
+		m.m[1][1] = std::cos(radAngle);
 
-		m.m[0][1] = std::sin(angle) * -1;
-		m.m[1][0] = std::sin(angle);
+		m.m[0][1] = std::sin(radAngle) * -1;
+		m.m[1][0] = std::sin(radAngle);
 
 		return m;
 	}
