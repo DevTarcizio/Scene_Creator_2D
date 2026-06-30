@@ -7,7 +7,7 @@ struct Transform {
 	vec2f scale{1.0f, 1.0f};
 	float rotation = 0.0f;
 
-	mat3 getMatrix() const {
+	mat3 getModelMatrix() const {
 		mat3 out{ mat3::identity() };
 
 		mat3 s{ mat3::scale(scale.x, scale.y) };

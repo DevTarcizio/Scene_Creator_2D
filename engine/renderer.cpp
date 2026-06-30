@@ -39,7 +39,7 @@ void Renderer::draw(const Object& obj, pipelineContext& ctx)
 	rasterizer.bindFragmentShader(fs);
 
 	// Matrix MVP - Projection * View * Model
-	mat3 mvpMatrix = ctx.camera->getProjectionMatrix() * ctx.camera->getViewMatrix() * t.getMatrix();
+	mat3 mvpMatrix = ctx.camera->getProjectionMatrix() * ctx.camera->getViewMatrix() * t.getModelMatrix();
 
 	const auto& vertices = m->getVertices();
 	const auto& indices = m->getIndices();
