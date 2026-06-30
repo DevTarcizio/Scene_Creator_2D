@@ -1,12 +1,7 @@
-# Patch Notes v1.7
+# Patch Notes v1.7.1
 
-## Novas Funcionalidades
-
-* **Sistema de Gizmo Interativo:** Implementada a classe `Gizmo` para controle de transformações em tempo real. O sistema utiliza composição de objetos `(arrowX, arrowY)` para criar uma representação visual dos eixos de movimento, ancorada dinamicamente aos objetos selecionados; A movimentação a partir deles ainda não foi implementada
-* **Fábrica de Objetos:** Criação da função `createArrow(Color, Angle)` para suportar customização de cor e orientação angular, eliminando a redundância de código e otimizando a criação de entidades de interface.
-
-## Refatoração
-* **Shaders Novos Criados:** Criados 2 shaders novos que possuem a mesma função, são eles: `NormalVertexShader` e `NormalFragmentShader`, cuja possuem função única de passar a transformação adiante, sem transformações adicionais.
+## Bug Fixes
+* **Correção da posição da arrowY:** antes ela entrava levemente para dentro do retangulo, devido ao erro da escala, agora geramos um quadrado 1x1 e com o transform.scale.y deformamos para virar um triangulo, assim evitando erro no scale.y / 2
 
 ## TO-DO
 * **Implementação das transformações a partir dos gizmos**. 
