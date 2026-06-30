@@ -108,10 +108,10 @@
     <ClCompile Include="engine\app.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="types\scene.cpp">
-      <Filter>Arquivos de Origem</Filter>
-    </ClCompile>
     <ClCompile Include="types\gizmo.cpp">
+      <Filter>Types\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="types\scene.cpp">
       <Filter>Types\Source Files</Filter>
     </ClCompile>
   </ItemGroup>

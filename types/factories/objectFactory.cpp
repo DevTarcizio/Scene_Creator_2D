@@ -82,9 +82,8 @@ Object createArrow(Color color, float rotationAngle)
 
 	Texture* texture = nullptr;
 	Transform transform;
-	float angle = rotationAngle * (3.1415f / 180.f);
 
-	transform.rotation = angle;
+	transform.rotation = rotationAngle;
 
 	Object obj(mesh, transform, texture);
 

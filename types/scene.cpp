@@ -40,8 +40,6 @@ void EditorScene::update(const updateContext& ctx)
 	ImGui::End();
 
 	if (ImGui::IsMouseClicked(ImGuiMouseButton_Left) && !ImGui::GetIO().WantCaptureMouse) {
-		ImGuiIO& io = ImGui::GetIO();
-
 		float mouseX{ io.MousePos.x };
 		float mouseY{ io.MousePos.y };
 
@@ -55,12 +53,11 @@ void EditorScene::update(const updateContext& ctx)
 
 		vec3f WorldPos = invView * (invProj * ndcPos);
 
-		for (std::unique_ptr<Object>& obj : objects) {
+		selectedObject = nullptr;
+		for (auto& obj : objects) {
 			if (obj->contains(WorldPos.x, WorldPos.y)) {
 				selectedObject = obj.get();
-			}
-			else {
-				selectedObject = nullptr;
+				break;
 			}
 		}
 	}
@@ -68,7 +65,7 @@ void EditorScene::update(const updateContext& ctx)
 	if (selectedObject != nullptr) {
 		if (ImGui::Begin("Inspetor")) {
 			ImGui::SliderFloat2("Posição X/Y", &selectedObject->getTransform().position.x, -50.f, 50.f);
-			ImGui::SliderAngle("Rotação", &selectedObject->getTransform().rotation);
+			ImGui::SliderFloat("Rotação", &selectedObject->getTransform().rotation, 0.0f, 360.0f);
 		}
 		ImGui::End();
 
